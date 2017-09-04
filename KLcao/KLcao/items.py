@@ -11,12 +11,13 @@ import scrapy
 class KlcaoItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    id = scrapy.Field()
+
     sku = scrapy.Field()
     name = scrapy.Field()
-    price = scrapy.Field()
-    image = scrapy.Field()
-    warehouse = scrapy.Field()
     country = scrapy.Field()
+    price = scrapy.Field()
+    warehouseNameAlias = scrapy.Field()
+    gallery = scrapy.Field()
+    img_description = scrapy.Field()
 
     pass

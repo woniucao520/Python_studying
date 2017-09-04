@@ -9,8 +9,8 @@ import MySQLdb
 import os
 
 
-
 class TaoProduct(object):
+
     def __init__(self):
         self.kword = '蛋糕'
         self.headers = {"User-Agent": 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'}
@@ -70,12 +70,13 @@ class TaoProduct(object):
             for price in pagejson['mods']['itemlist']['data']['auctions']:
                 pic_url = price['pic_url']
                 imageurl = 'http:'+ str(pic_url)
+                print imageurl
                 user_id = price['user_id']
-                if not os.path.exists("images"):
-                    os.mkdir("images")
-                r2 = requests.get(imageurl)
-                with open("images/" + user_id + '.jpg', "wb") as f:
-                    f.write(r2.content)
+                # if not os.path.exists("images"):
+                #     os.mkdir("images")
+                # r2 = requests.get(imageurl)
+                # with open("images/" + user_id + '.jpg', "wb") as f:
+                #     f.write(r2.content)
 
     def save_mysql(self,news_content):
         # 先连接数据库
