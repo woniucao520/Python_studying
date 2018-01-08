@@ -1,0 +1,36 @@
+<ons-list-header>认购订单</ons-list-header>
+{% if not len(sub_info)%}
+    <ons-card>
+    暂无持仓数据
+    </ons-card>
+{% else %}
+    {% for sid,qty,price,amount,status,pname in sub_info %}
+    <ons-card onclick="fn.load('pay-info.html')">
+         <ons-row style="opacity: 0.5;">
+                <ons-col>品名/单号</ons-col>
+                <ons-col>数量/单价</ons-col>
+                <ons-col>金额/状态</ons-col>
+            </ons-row>
+        <ons-row style="font-size:14px;">
+            <ons-col>{{pname}}</ons-col>
+            <ons-col>{{qty}}手</ons-col>
+            <ons-col>{{amount}}元</ons-col>
+        </ons-row>
+        <ons-row style="font-size:14px;">
+            <ons-col>#{{sid}}</ons-col>
+            <ons-col>{{price}}元/手</ons-col>
+            <ons-col>
+                {% if status == 0 %}
+                    审核中
+                {% elif status == 1 %}
+                <span style="color:red">未支付</span>
+                {% elif status == 2 %}
+                    <span style="color:green">已支付</span>
+                {% elif status == 3 %}
+                    已过期
+                {% end %}
+            </ons-col>
+        </ons-row>
+    </ons-card>
+    {% end %}
+{% end %}

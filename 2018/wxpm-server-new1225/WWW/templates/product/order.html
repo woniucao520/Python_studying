@@ -1,0 +1,56 @@
+<ons-row style="font-size:12px;color:#5d6572;text-align:left;margin-bottom:5px;">
+    <ons-col width="20%">买卖方向</ons-col>
+    <ons-col width="20%">作品名称</ons-col>
+    <ons-col width="45%">委托价/数量/成交量</ons-col>
+    <ons-col width="15%">状态</ons-col>
+</ons-row>
+{% if len(os) %}
+    {% for id, d,t,name,p_no,price,v,dv,status in os %}
+    <ons-row style="margin:5px;padding-bottom:5px;border-bottom:1px solid #5d6572;" onclick="fn.Order.cancel({{id}},{{status}});">
+        <ons-col width="20%">
+                {% if d=='B' %}
+            <span style="color:red;">
+                    买入
+                {% else %}
+            <span style="color:green;">
+                    卖出
+                {% end %}
+            </span>
+            <span style="display:block;font-size:12px;">
+                {{t}}
+            </span>
+        </ons-col>
+        <ons-col width="25%">
+            {{name}}<span style="display:block;font-size:12px;">{{p_no}}</span>
+        </ons-col>
+        <ons-col width="35%">
+            {{price}}<span style="display:block;font-size:12px;">{{v}}|{{dv}}</span>
+        </ons-col>
+        <ons-col width="20%" style="color:#5d6572;font-size:12px;line-height:40px;">
+            {% if status == 0 %}
+                已埋单
+            {% elif status == 1 %}
+                已确认
+            {% elif status == 2 %}
+                已完成
+            {% elif status == 3 %}
+                已撤单
+            {% elif status == 4 %}
+                已部成
+            {% elif status == 5 %}
+                已部撤
+            {% end %}
+        </ons-col>
+    </ons-row>
+    {%end%}
+{% else %}
+暂无委托记录
+{% end %}
+
+<style>
+    #exchange-order ons-row{
+        margin:10px 0;
+        padding:5px 0;
+        border-bottom:1px solid #8e959d;
+    }
+</style>

@@ -1,0 +1,44 @@
+<ons-row>
+    <ons-col>
+        {% for i in range(len(bi))%}
+        <ons-row>
+            <ons-col>卖{{bi[i]}}</ons-col>
+            <ons-col id="s_d_price_{{i}}" style="text-align:right;">
+                {% if i< len(sd5)%}
+                    {{round(sd5[i][1],2)}}
+                {% else %}
+                    --
+                {% end %}
+            </ons-col>
+            <ons-col id="s_d_volume_{{i}}" style="text-align:right;">
+                {% if i< len(sd5)%}
+                    {{int(sd5[i][2])}}
+                {% else %}
+                    --
+                {% end %}
+            </ons-col>
+        </ons-row>
+        {% end %}
+    </ons-col>
+    <ons-col>
+        {% for i in range(len(bi)) %}
+        <ons-row>
+            <ons-col>买{{bi[i]}}</ons-col>
+            <ons-col id="b_d_price_{{i}}" style="text-align:right;">
+                {% if i< len(bd5)%}
+                    {{round(bd5[i][1],2)}}
+                {% else %}
+                    --
+                {% end %}
+            </ons-col>
+            <ons-col id="b_d_volume_{{i}}" style="text-align:right;">
+                {% if i< len(bd5)%}
+                    {{int(bd5[i][2])}}
+                {% else %}
+                    --
+                {% end %}
+            </ons-col>
+        </ons-row>
+        {% end %}
+    </ons-col>
+</ons-row>

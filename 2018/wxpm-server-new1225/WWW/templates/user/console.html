@@ -1,0 +1,44 @@
+<ons-list>
+    <ons-list-item>
+        <div class="left" onclick="fn.load('user-update.html')">
+            <img class="list-item__thumbnail" src="http://placekitten.com/g/40/40" />
+        </div>
+        <div class="center" onclick="fn.load('user-update.html')">
+            <span class="list-item__title" id="h-user-title">{{user.real_name}}</span>
+            <span class="list-item__subtitle" id="h-user-subtitle">粉丝:{{suns}}</span>
+        </div>
+        <div class="right">
+            <ons-icon icon="fa-qrcode" size="20px" onclick="showQRCode()"></ons-icon>
+        </div>
+    </ons-list-item>
+
+    <ons-list-header></ons-list-header>
+    <ons-list-item tappable onclick="fn.load('wallet.html')">
+        <div class="left">
+            <ons-icon icon="ion-cash" size="20px"></ons-icon>
+        </div>
+        资产
+    </ons-list-item>
+    <ons-list-item tappable onclick="fn.load('user-orders.html')">
+        <div cＦlass="left">
+            <ons-icon icon="ion-android-favorite" size="20px"></ons-icon>
+        </div>
+        订单
+    </ons-list-item>
+
+    <ons-list-item tappable onclick="fn.load('shop-address.html')">
+        <div class="left">
+            <ons-icon icon="fa-truck" size="20px"></ons-icon>
+        </div>
+        收货地址
+    </ons-list-item>
+
+
+    <ons-list-header></ons-list-header>
+    <ons-list-item tappable onclick="fn.logout()">
+        <div class="left">
+            <ons-icon icon="ion-android-exit" size="20px"></ons-icon>
+        </div>
+        退出
+    </ons-list-item>
+</ons-list>

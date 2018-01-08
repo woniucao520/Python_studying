@@ -1,0 +1,295 @@
+<div id="data-canvas" style="width:100%; height:400px;"></div>
+
+<script>
+
+    var x_times = {% raw x %};
+    var d_price = {% raw dp %};
+    var a_price = {% raw ap %};
+    var d_volume = {% raw dv %};
+    var k_data = {% raw kd %};
+
+    var options = {
+        baseOption:{
+            title:{
+                text: '分时'
+            },
+            tooltips:{},
+            legend:{
+                data:['成交价','平均价']
+            },
+            grid: [
+                {
+                    left: '10%',
+                    right: '10%',
+                    height: '50%'
+                },
+                {
+                    left: '10%',
+                    right: '10%',
+                    top: '65%',
+                    height: '20%'
+                }
+            ],
+            xAxis:[
+                {
+                    type:'category',
+                    boundaryGap:false,
+                    scale:true,
+                    data: x_times,
+                },
+                {
+                    type:'category',
+                    boundaryGap:false,
+                    gridIndex:1,
+                    data: x_times,
+                    axisLabel: {show: false},
+                }
+            ],
+            yAxis:[
+                {
+                    scale:true,
+                    splitNumber:5,
+                    splitLine:{show:true}
+                },
+                {
+                    scale:true,
+                    splitLine:{show:false},
+                    gridIndex:1,
+                    splitNumber:2
+                }
+            ],
+            series:[
+                {
+                    name:'成交价',
+                    type:'line',
+                    yAxisIndex:0,
+                    data:d_price,
+                    smooth:true,
+                    lineStyle:{
+                        normal:{
+                            //color:'#fff'
+                        }
+                    }
+                },
+                {
+                    name:'平均价',
+                    type:'line',
+                    yAxisIndex:0,
+                    data:a_price,
+                    smooth:true,
+                    lineStyle:{
+                        normal:{
+                            color:'yellow'
+                        }
+                    }
+                },
+                {
+                    name:'成交量',
+                    type:'bar',
+                    xAxisIndex: 1,
+                    yAxisIndex: 1,
+                    data:d_volume,
+                }
+            ]
+        },
+    };
+
+    var upColor = '#ec0000';
+    var upBorderColor = '#8A0000';
+    var downColor = '#00da3c';
+    var downBorderColor = '#008F28';
+
+    function splitData(rawData) {
+        var categoryData = [];
+        var values = []
+        for (var i = 0; i < rawData.length; i++) {
+            categoryData.push(rawData[i].splice(0, 1)[0]);
+            values.push(rawData[i])
+        }
+        return {
+            categoryData: categoryData,
+            values: values
+        };
+    }
+
+    function calculateMA(dayCount) {
+        var result = [];
+        for (var i = 0, len = data0.values.length; i < len; i++) {
+            if (i < dayCount) {
+                result.push('-');
+                continue;
+            }
+            var sum = 0;
+            for (var j = 0; j < dayCount; j++) {
+                sum += data0.values[i - j][1];
+            }
+            result.push(sum / dayCount);
+        }
+        return result;
+    }
+
+    var data0 = splitData(k_data);
+
+    var k_options = {
+        title:{
+            text:'日K',
+            left:0
+        },
+        /*
+        tooltip:{
+            trigger: 'axis',
+            axisPointer:{
+                type: 'cross'
+            }
+        },
+        */
+        legend:{
+            data:['日K','MA5','MA10','MA20']
+        },
+        /*
+        grid:{
+            left: '10%',
+            right: '10%',
+            bottom:'15%'
+        },
+        */
+        xAxis:{
+            type: 'category',
+            data: data0.categoryData,
+            scale: true,
+            boundaryGap: true,
+            axisLine: {onZero: false},
+            splitLine: {show: false},
+            splitNumber: 2,
+            min: 'dataMin',
+            max: 'dataMax'
+        },
+        yAxis:{
+            scale: true,
+            splitArea:{
+                show: true
+            }
+        },
+        dataZoom:[
+            {
+                type: 'inside',
+                start:50,
+                end:100
+            },
+            {
+                show:true,
+                type: 'slider',
+                y: '90%',
+                start: 50,
+                end: 100
+            }
+        ],
+        series:[
+            {
+                name: '日K',
+                type: 'candlestick',
+                data: data0.values,
+                itemStyle:{
+                    normal:{
+                        color: upColor,
+                        color0: downColor,
+                        borderColor: upBorderColor,
+                        borderColor0: downBorderColor
+                    }
+                },
+                /*
+                markPoint:{
+                    label:{
+                        normal:{
+                            formatter: function(param){
+                                return param != null ? Math.round(param.value): '';
+                            }
+                        }
+                    },
+                    data:[
+                        {
+                            name: 'XX标点',
+                            coord: ['2017-10-23', 2300],
+                            value: 2300,
+                            itemStyle:{
+                                normal:{color: 'rgb(41,60,85)'}
+                            }
+                        },
+                        {
+                            name: 'Max',
+                            type: 'max',
+                            valueDim: 'highest'
+                        },
+                        {
+                            name: 'Min',
+                            type: 'min',
+                            valueDim: 'lowest'
+                        },
+                        {
+                            name: 'Avg',
+                            type: 'average',
+                            valueDim: 'close'
+                        }
+                    ],
+                    tooltip:{
+                        formatter: function(param){
+                            return param.name + '<br>' + (param.data.coord || '');
+                        }
+                    }
+                }
+                */
+            },
+            {
+                name: 'MA5',
+                type: 'line',
+                data: calculateMA(5),
+                smooth: true,
+                lineStyle:{
+                    normal:{opacity: 0.5}
+                }
+            },
+            {
+                name: 'MA10',
+                type: 'line',
+                data: calculateMA(10),
+                smooth: true,
+                lineStyle:{
+                    normal:{opacity: 0.5}
+                }
+            },
+            {
+                name: 'MA20',
+                type: 'line',
+                data: calculateMA(20),
+                smooth: true,
+                lineStyle:{
+                    normal:{opacity: 0.5}
+                }
+            },
+            /*
+            {
+                name: 'MA30',
+                type: 'line',
+                data: calculateMA(30),
+                smooth: true,
+                lineStyle:{
+                    normal:{opacity: 0.5}
+                }
+            }
+            */
+        ]
+    };
+
+    function getData(){
+        $.ajax();
+    }
+
+    var current_option = options;
+    setInterval(function(){
+        data = fn.Product.getChartData();
+
+        fn.chart('data-canvas').setOption(current_option);
+    },1000);
+
+    fn.chart('data-canvas',options);
+</script>

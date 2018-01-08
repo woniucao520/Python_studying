@@ -1,0 +1,51 @@
+<ons-card>
+    <ons-row>
+        <ons-col width="30%">到帐银行卡</ons-col>
+        <ons-col width="70%">
+            {% if len(banks) %}
+            <ons-select id="choose-bank-id">
+                {% for id, bank_no, bank_name in banks %}
+                <option value="{{id}}">{{bank_no}}</option>
+                {% end %}
+            </ons-select>
+            {% else %}
+            <ons-button modifier="quiet" onclick="fn.load('user-new-bank.html')">
+                <ons-icon icon="ion-plus-circled"></ons-icon>
+                    新增银行卡
+            </ons-button>
+            {% end%}
+        </ons-col>
+    </ons-row>
+    <ons-row>
+        <ons-col>提现金额</ons-col>
+        <ons-col></ons-col>
+    </ons-row>
+    <ons-row style="font-size:18px;">
+        <ons-col width="20%" style="text-align:center;">
+            <ons-icon icon="fa-jpy"></ons-icon>
+        </ons-col>
+        <ons-col width="80%">
+            <ons-input id="withdraw-amount" modifier="underbar" placeholder="金额" float>
+            </ons-input>
+        </ons-col>
+    </ons-row>
+    <ons-row style="color:gray;">
+        <ons-col>当前可提现余额</ons-col>
+        <ons-col>{{max_amount}}</ons-col>
+    </ons-row>
+    <ons-row>
+        <ons-col>
+            <ons-button modifier="large"{% if not len(banks)%} disabled="true" {%else%} onclick="fn.User.doWithdraw({{max_amount}})" {%end%}>提现</ons-button>
+        </ons-col>
+    </ons-row>
+</ons-card>
+<style>
+    #user-withdraw-content ons-row{
+        margin:5px;
+        font-size:14px;
+    }
+
+    #user-withdraw-content ons-col{
+        line-height:40px;
+    }
+</style>

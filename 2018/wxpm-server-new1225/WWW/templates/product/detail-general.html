@@ -1,0 +1,27 @@
+<div class="current-price-up">{{info['current_price']}}</div>
+<div class="price-change-up"><span class="price-delta">{{info['delta']}}</span><span class="price-gains">{{info['gains']}}%</span></div>
+<div class="general-data">
+
+    <ons-row>
+        <ons-col style="color:gray;">今开</ons-col>
+        <ons-col>{{info['open_price']}}</ons-col>
+        <ons-col style="color:gray;">最高</ons-col>
+        <ons-col>{{info['max_price']}}</ons-col>
+        <ons-col style="color:gray;">成交量</ons-col>
+        <ons-col>{{info['total_volume']}}</ons-col>
+    </ons-row>
+    <ons-row>
+        <ons-col style="color:gray;">换手率</ons-col>
+        <ons-col>{{info['turn']}}%</ons-col>
+        <ons-col style="color:gray;">最低</ons-col>
+        <ons-col>{{info['min_price']}}</ons-col>
+        <ons-col style="color:gray;">成交额</ons-col>
+        <ons-col>
+            {% if float(info['total_amount']) > 10000 %}
+                {{round(float(info['total_amount'])/10000.00,2)}}万
+            {% else %}
+                {{info['total_amount']}}
+            {% end %}
+        </ons-col>
+    </ons-row>
+</div>

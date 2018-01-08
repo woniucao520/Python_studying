@@ -1,0 +1,23 @@
+{% for item in data %}
+
+<ons-row onclick="fn.Product.setCurrentProduct('{{item['p_no']}}','{{item['name']}}','{{item['status']}}'); fn.load('trans-product.html')">
+    <ons-col>
+        <span>{{item['name']}}</span>
+        <span style="font-size:12px;display:block;">{{item['p_no']}}</span>
+    </ons-col>
+    <ons-col style="line-height:40px;">
+        {{item['current_price']}}
+    </ons-col>
+    <ons-col style="line-height:40px;">
+        {{item['gains']}}%
+    </ons-col>
+</ons-row>
+{% end %}
+<style>
+    .page__background{
+        background-color:#181b25;
+    }
+    .page__content{
+        color:white;
+    }
+</style>

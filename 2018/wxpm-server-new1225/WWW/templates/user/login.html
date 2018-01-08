@@ -1,0 +1,18 @@
+{% extends "../base.html" %}
+
+{% block login %}
+<ons-page>
+    <div style="text-align:center; margin-top:30px;">
+        <p>
+            <ons-input id="login_name" modifier="underbar" placeholder="Username" float></ons-input>
+        </p>
+        <p>
+            <ons-input id="login_pass" modifier="underbar" placeholder="Password" float></ons-input>
+        </p>
+        <p style="margin-top:30px;">
+            <ons-button onclick="login()">Sign In</ons-button>
+
+        </p>
+    </div>
+</ons-page>
+{% end %}

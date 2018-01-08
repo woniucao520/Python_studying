@@ -1,0 +1,28 @@
+version: 1.0
+
+development: 1
+
+wx.mysql.config:
+  host: 'localhost'
+  port: '3306'
+  db: 'wxpm'
+  user: 'wmyz'
+  pass: 'wpyy123456A8!'
+  pool_recycle: 3600
+  pool_size: 50
+  max_overflow: 10
+
+wx.redis.config:
+  host: 'localhost'
+  port: '6379'
+  channels:
+    matching: 'chan:matching'
+    broadcast: 'chan:updates'
+
+wx.server.config:
+  port: '8889'
+
+wx.web.server.config:
+  port: '8887'
+
+wx.matching.server.config:

@@ -1,0 +1,79 @@
+<div style="padding: 14px 6px 14px 16px">
+    <div class="assets_wrapper">
+        <div class="assets_coins_wrapper">
+            <img src="{{static_url('images/coins.png')}}">
+        </div>
+        <div class="assets_info_wrapper">
+            <div class="assets_info_numbers">
+                <div>
+                    <div>{{ total_assets }}</div>
+                    <div class="assets_info_text">总资产</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="assets_detail_wrapper">
+        <ons-row>
+            <ons-col>
+                余额
+            </ons-col>
+            <ons-col>
+                可用
+            </ons-col>
+            <ons-col>
+                冻结
+            </ons-col>
+        </ons-row>
+        <ons-row>
+            <ons-col>{{ money_info['am'] }}</ons-col>
+            <ons-col>{{ money_info['cum'] }}</ons-col>
+            <ons-col>{{ money_info['fm'] }}</ons-col>
+        </ons-row>
+    </div>
+</div>
+<ons-list>
+    <ons-list-item tappable modifier="chevron" onclick="fn.load('pay-info.html')">
+        <div class="left">
+            <ons-icon icon="fa-money"></ons-icon>
+        </div>
+        <div class="center">充值</div>
+    </ons-list-item>
+    <ons-list-item tappable modifier="chevron" onclick="fn.load('user-withdraw.html')">
+        <div class="left">
+            <ons-icon icon="fa-credit-card"></ons-icon>
+        </div>
+        <div class="center">出金</div>
+    </ons-list-item>
+</ons-list>
+
+
+<ons-list-header>持仓</ons-list-header>
+{% if not len(assets_info) %}
+    <ons-card>
+    暂无持仓数据
+    </ons-card>
+{% else %}
+    {% for p_no, name, left_volume, left_cost, market_value, gains, win_value in assets_info %}
+    <ons-card>
+            <ons-row>
+                <ons-col>编号/品名</ons-col>
+                <ons-col>成本/现价</ons-col>
+                <ons-col>数量/市值</ons-col>
+            </ons-row>
+            <ons-row>
+                <ons-col>{{p_no}}</ons-col>
+                <ons-col>{{left_cost}}</ons-col>
+                <ons-col>{{left_volume}}</ons-col>
+            </ons-row>
+            <ons-row>
+                <ons-col>{{name}}</ons-col>
+                {% if left_volume==0 %}
+                <ons-col>0.00</ons-col>
+                {% else %}
+                <ons-col>{{round(market_value/left_volume,2)}}</ons-col>
+                {% end %}
+                <ons-col>{{market_value}}</ons-col>
+            </ons-row>
+    </ons-card>
+    {% end %}
+{% end %}

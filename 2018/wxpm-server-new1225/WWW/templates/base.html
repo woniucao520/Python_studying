@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ escape(handler.settings['site_title']) }}</title>
+    <link rel="stylesheet" href="{{static_url('OnsenUI/onsenui.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{static_url('OnsenUI/onsen-css-components.min.css')}}" type="text/css">
+    <script type="text/javascript" src="{{static_url('OnsenUI/onsenui.min.js')}}"></script>
+    <script type="text/javascript" src="{{static_url('libs/jquery-3.2.1.min.js')}}"></script>
+    <script type="text/javascript" src="{{static_url('libs/qrcodejs/qrcode.js')}}"></script>
+    <script type="text/javascript" src="{{static_url('libs/jquery.simple.websocket.min.js')}}"></script>
+    <script type="text/javascript" src="{{static_url('libs/echarts.min.js')}}"></script>
+    <script type="text/javascript" async="async" src="{{static_url('common.js')}}" ></script>
+    <script type="text/javascript" async="async" src="{{static_url('b2c.js')}}" ></script>
+    <script type="text/javascript" async="async" src="{{static_url('user.js')}}" ></script>
+    <script type="text/javascript" async="async" src="{{static_url('product.js')}}" ></script>
+    <script type="text/javascript" async="async" src="{{static_url('order.js')}}" ></script>
+    <script type="text/javascript" async="async" src="{{static_url('socket.js')}}" ></script>
+
+    <link rel="stylesheet" href="{{static_url('style.css')}}" type="text/css">
+</head>
+<body>
+
+<ons-splitter>
+    <ons-splitter-side id="menu" side="right" width="220px" collapse>
+        <ons-page>
+            <ons-list>
+                <ons-list-item onclick="fn.load('home.html')" tappable>
+                    <div class="left">
+                        <ons-icon icon="ion-android-home"></ons-icon>
+                    </div>
+                    首页
+                </ons-list-item>
+
+                <ons-list-item onclick="fn.load('subscribe.html')" tappable>
+                    <div class="left">
+                        <ons-icon icon="fa-paw"></ons-icon>
+                    </div>
+                    认购
+                </ons-list-item>
+
+                <ons-list-item onclick="fn.load('transaction.html')" tappable>
+                    <div class="left">
+                        <ons-icon icon="fa-bar-chart"></ons-icon>
+                    </div>
+                    交易
+                </ons-list-item>
+
+                <ons-list-item onclick="fn.load('b2c-products.html')" tappable>
+                    <div class="left">
+                        <ons-icon icon="fa-shopping-cart"></ons-icon>
+                    </div>
+                    商城
+                </ons-list-item>
+
+                <ons-list-item onclick="fn.load('profile.html')" tappable>
+                    <div class="left">
+                        <ons-icon icon="ion-android-person"></ons-icon>
+                    </div>
+                    会员中心
+                </ons-list-item>
+
+                   <ons-list-item onclick="fn.load('message.html')" tappable>
+                    <div class="left">
+                        <ons-icon icon="ion-android-person"></ons-icon>
+                    </div>
+                    联系我们
+                </ons-list-item>
+
+
+                <ons-list-item onclick="fn.logout()" tappable>
+                    <div class="left">
+                        <ons-icon icon="ion-android-exit"></ons-icon>
+                    </div>
+                    退出
+                </ons-list-item>
+
+            </ons-list>
+        </ons-page>
+    </ons-splitter-side>
+    <ons-splitter-content>
+        <ons-navigator id="appNavigator" page="home.html"></ons-navigator>
+    </ons-splitter-content>
+</ons-splitter>
+
+<template id="home.html">
+    <ons-page id="page-home">
+        <ons-toolbar>
+            <div class="center">吾品玉艺</div>
+            <div class="right">
+                <ons-toolbar-button onclick="fn.open()">
+                  <ons-icon icon="md-menu"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+        <div id="home-content" style="width:100%;height:100%;">
+            {% block home %}{% end %}
+        </div>
+        <script type="text/javascript">
+            ons.getScriptPage().onInit = function(){
+                this.onShow = function(){
+                    //fn.checkLogin();
+                }
+            }
+        </script>
+    </ons-page>
+</template>
+<template id="transaction.html">
+    <ons-page id="transaction">
+        <ons-toolbar style="background-color:#df3031;">
+            <div class="left">
+                <ons-toolbar-button onclick="fn.load('home.html')">
+                    <ons-icon icon="ion-android-home"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">全部拍品</div>
+            <div class="right">
+                <ons-toolbar-button onclick="">
+                    <ons-icon icon="ion-android-search"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+        <ons-tabbar swipeable position="bottom">
+            <ons-tab  style="background-color:#262c38;" page="market.html" label="行情" icon="fa-line-chart" active></ons-tab>
+            <ons-tab  style="background-color:#262c38;" onclick="fn.load('exchange.html')" label="交易" icon="ion-shuffle"></ons-tab>
+            <ons-tab  style="background-color:#262c38;" onclick="fn.load('profile.html')" label="我的" icon="ion-android-person"></ons-tab>
+        </ons-tabbar>
+        <style>
+            ons-row{
+                padding:5px 0;
+                border-bottom:1px solid gray;
+            }
+            ons-col{
+                text-align:center;
+                padding: 5px 0;
+            }
+        </style>
+    </ons-page>
+</template>
+<template id="market.html">
+    <ons-page id="market">
+        <div id="market-content"></div>
+    <script>
+        ons.getScriptPage().onInit = function(){
+            fn.Product.ajaxGetProducts('#market-content');
+        }
+    </script>
+    </ons-page>
+</template>
+<template id="trans-product.html">
+    <ons-page id="trans-product">
+        <ons-toolbar style="background-color:#1d212b; color:white;">
+            <div class="left">
+                <ons-toolbar-button onclick="fn.load('transaction.html')">
+                    <ons-icon icon="ion-android-arrow-back"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center" style="text-align:center;color:white;">
+                <span id="toolbar-p-name"></span>
+                <span id="toolbar-p-no" style="font-size:12px;"></span>
+            </div>
+            <div class="right">
+                <ons-toolbar-button onclick="fn.load_ex('exchange.html','exchange-tabbar',3)">
+                    <ons-icon icon="ion-bag"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+
+        <ons-speed-dial position="right bottom" direction="up">
+            <ons-fab style="background-color:orange;">
+                <ons-icon icon="fa-tachometer"></ons-icon>
+            </ons-fab>
+            <ons-speed-dial-item onclick="fn.load_ex('exchange.html','exchange-tabbar',0)" style="background-color:red;">
+                买
+            </ons-speed-dial-item>
+            <ons-speed-dial-item onclick="fn.load_ex('exchange.html','exchange-tabbar',1);">
+                卖
+            </ons-speed-dial-item>
+            <ons-speed-dial-item style="background-color:gray;" onclick="fn.load_ex('exchange.html','exchange-tabbar',2);">
+                撤
+            </ons-speed-dial-item>
+        </ons-speed-dial>
+        <div id="trans-product-content"></div>
+        <script>
+            ons.getScriptPage().onInit = function(){
+                $('#trans-product #toolbar-p-name').text(fn.Product.getCurrentProduct('name'));
+                $('#trans-product #toolbar-p-no').text(fn.Product.getCurrentProduct());
+
+                var timer;
+
+                this.onShow = function(){
+                    $.ajax({
+                        method:'post',
+                        url: '/product/detail',
+                        data: {p_no:fn.Product.getCurrentProduct()},
+                        dataType:'html',
+                        cache: false
+                    }).done(function(data){
+                        $('#trans-product-content').html(data);
+
+                        //timeChart = fn.Product.timeChartInit('data-canvas');
+                    });
+
+                    timer = fn.socket.startRequestTimer(fn.socket.Command.encode(fn.socket.Command.ProductDetail,{p_no:fn.Product.getCurrentProduct()}));
+                    fn.socket.listen(function(data){
+                        console.log(data);
+                        if(data.cmd == fn.socket.Command.ProductDetail){
+                            fn.Product.updateGeneralData(JSON.parse(data.args.general));
+                            fn.Product.updateTopFiveSales(JSON.parse(data.args.sales), '#sale-buy-delegate');
+                            fn.Product.updateTopFiveBuys(JSON.parse(data.args.buys), '#sale-buy-delegate');
+
+                            fn.Product.updateChart(timeChartObj,{
+                                xAxis:[
+                                    {
+                                        data: data.args.timeChart[0]
+                                    },
+                                    {
+                                        data: data.args.timeChart[0]
+                                    }
+                                ],
+                                series:[
+                                    {
+                                        data: data.args.timeChart[1],
+                                    },
+                                    {
+                                        data: data.args.timeChart[2],
+                                    },
+                                    {
+                                        data: data.args.timeChart[3]
+                                    }
+                                ]
+                              }
+                            );
+
+                            var k_data = fn.Product.KChartSplitData(data.args.kChart);
+
+                            fn.Product.updateChart(kChartObj,{
+                                xAxis:[
+                                    {
+                                        data: k_data.categoryData
+                                    },
+                                    {
+                                        data: k_data.categoryData
+                                    }
+                                ],
+                                series:[
+                                    {
+                                        data: k_data.values
+                                    },
+                                    {
+                                        data: fn.Product.calculateMA(k_data.values, 5),
+                                    },
+                                    {
+                                        data: fn.Product.calculateMA(k_data.values, 10),
+                                    },
+                                    {
+                                        data: fn.Product.calculateMA(k_data.values, 20),
+                                    },
+                                    {
+                                        data: k_data.volumes,
+                                    }
+                                ]
+                            });
+
+                        }
+                    });
+                }
+
+                this.onHide = function(){
+                    fn.socket.stopRequestTimer(timer);
+                }
+
+                this.onDestroy = function(){
+                    fn.socket.stopRequestTimer(timer);
+                }
+            }
+        </script>
+    </ons-page>
+</template>
+
+
+<template id="menu.html">
+  <ons-page id="menu" width="110px">
+    <ons-list style="background-color: transparent;">
+      <ons-list-header class="menu_header">View by Category</ons-list-header>
+      <ons-list-item tappable>删除</ons-list-item>
+      <ons-list-item tappable>置顶操作</ons-list-item>
+
+    </ons-list>
+
+
+{#    <style type="text/css">#}
+{#      .menu_header {#}
+{#        background-color: black;#}
+{#        border-bottom: 1px solid rgba(147, 145, 145, 0.76);#}
+{#        color: white;#}
+{#        height: 25px;#}
+{#        font-size: 10px;#}
+{#        padding: 0 0 0 16px!important;#}
+{#      }#}
+{#    </style>#}
+  </ons-page>
+</template>
+
+
+
+
+<template id="exchange.html">
+    <ons-page id="exchange">
+        <ons-toolbar style="background-color:#df3031;">
+            <div class="left">
+                <ons-toolbar-button onclick="fn.load('trans-product.html')">
+                    <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">
+                交易
+            </div>
+        </ons-toolbar>
+        <ons-tabbar position="top" id="exchange-tabbar">
+            <ons-tab label="买入" page="exchange-buy.html" style="background-color:#222837;" active></ons-tab>
+            <ons-tab label="卖出" page="exchange-sale.html" style="background-color:#222837;"></ons-tab>
+            <ons-tab label="委托" page="exchange-delegate.html" style="background-color:#222837;"></ons-tab>
+            <ons-tab label="持仓" page="exchange-assets.html" style="background-color:#222837;"></ons-tab>
+        </ons-tabbar>
+
+        <script>
+            ons.getScriptPage().onInit = function(){
+                this.onShow = function(){
+
+                    index = localStorage.getItem('exchange-tabbar');
+                    localStorage.removeItem('exchange-tabbar');
+                    if(index != 0)
+                        document.getElementById('exchange-tabbar').setActiveTab(index);
+
+                }
+            }
+        </script>
+    </ons-page>
+</template>
+<template id="exchange-buy.html">
+    <ons-page id="exchange-buy">
+        <div id="exchange-buy-content" style="background-color:#303645; height:100%;width:100%;"></div>
+
+        <script>
+            ons.getScriptPage().onInit = function(){
+                var timer;
+                this.onShow = function(){
+                    fn.Product.ajaxLoadHtml('/product/buy','#exchange-buy-content',{p_no:fn.Product.getCurrentProduct(),user_id:fn.User.getLoginId()});
+
+                    timer = fn.socket.startRequestTimer(fn.socket.Command.encode(fn.socket.Command.UserBuy,{p_no:fn.Product.getCurrentProduct()}));
+                    fn.socket.listen(function(data){
+                        if(data.cmd == fn.socket.Command.UserBuy){
+                            //fn.Product.updateGeneralData(JSON.parse(data.args.general));
+                            fn.Product.updateTopFiveSales(JSON.parse(data.args.sales),'#exchange-buy-delegate');
+                            fn.Product.updateTopFiveBuys(JSON.parse(data.args.buys),'#exchange-buy-delegate');
+                        }
+                    });
+
+                }
+
+                this.onHide = function(){
+                    fn.socket.stopRequestTimer(timer);
+                }
+            }
+        </script>
+    </ons-page>
+</template>
+<template id="exchange-sale.html">
+    <ons-page id="exchange-sale">
+        <div id="exchange-sale-content" style="background-color:#303645; height:100%;width:100%;"></div>
+
+        <script>
+            ons.getScriptPage().onInit = function(){
+                var timer;
+                this.onShow = function(){
+                    fn.Product.ajaxLoadHtml('/product/sale','#exchange-sale-content',{p_no:fn.Product.getCurrentProduct(),user_id:fn.User.getLoginId()});
+
+                    timer = fn.socket.startRequestTimer(fn.socket.Command.encode(fn.socket.Command.UserSale,{p_no:fn.Product.getCurrentProduct()}));
+                    fn.socket.listen(function(data){
+                        if(data.cmd == fn.socket.Command.UserSale){
+                            //fn.Product.updateGeneralData(JSON.parse(data.args.general));
+                            fn.Product.updateTopFiveSales(JSON.parse(data.args.sales), '#exchange-sale-delegate');
+                            fn.Product.updateTopFiveBuys(JSON.parse(data.args.buys), '#exchange-sale-delegate');
+                        }
+                    });
+                }
+
+                this.onHide = function(){
+                    fn.socket.stopRequestTimer(timer);
+                }
+            }
+        </script>
+    </ons-page>
+</template>
+<template id="exchange-delegate.html">
+    <ons-page>
+        <div id="exchange-order-content" style="width:100%;background-color:#252b37;color:#8e959d;padding:5px 5px;"></div>
+
+        <script>
+            ons.getScriptPage().onInit = function(){
+                this.onShow = function(){
+                    fn.Product.ajaxLoadHtml('/product/order','#exchange-order-content',{user_id:fn.User.getLoginId()});
+                }
+            }
+        </script>
+    </ons-page>
+</template>
+<template id="exchange-assets.html">
+    <ons-page id="exchange-assets">
+        <div id="exchange-assets-content" style="width:100%;height:100%;background-color:#252b37;padding:10px;"></div>
+
+        <script>
+            ons.getScriptPage().onInit = function(){
+                this.onShow = function(){
+                    fn.Product.ajaxLoadHtml('/product/assets', '#exchange-assets-content',{user_id:fn.User.getLoginId()});
+                }
+            }
+        </script>
+    </ons-page>
+</template>
+<template id="profile.html">
+    <ons-page id="console-profile">
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button onclick="fn.load('transaction.html')">
+                    <ons-icon icon="fa-bar-chart"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="right">
+                <ons-toolbar-button onclick="fn.open()">
+                  <ons-icon icon="md-menu"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+        <div id="console-content"></div>
+        <script>
+            ons.getScriptPage().onInit = function(){
+
+                this.onShow = function(){
+                    fn.User.getConsoleHtml('#console-profile #console-content');
+                }
+
+                this.onHide = function(){}
+                this.onDestroy = function(){}
+            }
+
+            ons.ready(function(){
+                fn.qrcode('qrcode');
+
+            });
+
+             var showQRCode = function(){
+                    $('#qrcode-dialog .dialog').css({'min-width':'148px','width':'148px'});
+                    var dlg = document.getElementById('qrcode-dialog');
+                    dlg.show();
+             }
+
+        </script>
+    </ons-page>
+</template>
+
+
+
+
+<ons-dialog id="qrcode-dialog" onclick="this.hide()">
+    <div style="padding:10px; text-align:center;">
+        <div id="qrcode"></div>
+        <p>
+            扫描分享有惊喜
+        </p>
+    </div>
+</ons-dialog>
+<template id="user-new-bank.html">
+    <ons-page id="user-new-bank">
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button onclick="fn.load('user-update.html')">
+                    <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">新增银行卡</div>
+            <div class="right">
+                <ons-toolbar-button onclick="fn.User.saveBankInfo()">
+                    <ons-icon icon="fa-floppy-o"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+        <div style="text-align:center; margin-top:30px;">
+            <p>
+                <ons-input id="bank_no" modifier="underbar" placeholder="银行帐号" float></ons-input>
+            </p>
+            <p>
+                <ons-input id="bank_account_name" modifier="underbar" placeholder="帐号名称"  float></ons-input>
+            </p>
+            <p>
+                <ons-input id="bank_province" modifier="underbar" placeholder="所在省份"  float></ons-input>
+            </p>
+            <p>
+                <ons-input id="bank_city" modifier="underbar" placeholder="所在城市"  float></ons-input>
+            </p>
+            <p>
+                <ons-input id="bank_name" modifier="underbar" placeholder="开户银行"  float></ons-input>
+            </p>
+            <p>
+                <ons-input id="bank_branch_name" modifier="underbar" placeholder="所在支行" float></ons-input>
+            </p>
+            <p>
+                <label class="left">
+                    <ons-checkbox input-id="check-is-default-bank"></ons-checkbox>
+                </label>
+                <label for="check-is-default-bank" class="center">
+                    默认帐号
+                </label>
+            </p>
+        </div>
+    </ons-page>
+</template>
+<template id="wallet.html">
+    <ons-page id="page-wallet">
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button onclick="fn.load('profile.html')">
+                    <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">我的资产</div>
+            <div class="right">
+                <ons-toolbar-button onclick="fn.showWalletActionSheet()">
+                    <ons-icon icon="ion-android-more-vertical"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+        <div class="content" id="page-wallet-content"></div>
+        <style>
+            .assets_wrapper{
+                display: inline-flex;
+            }
+
+            .assets_coins_wrapper{
+                margin-right: 10px;
+                width:35%;
+                position:relative;
+            }
+
+            .assets_coins_wrapper img{
+                width:100%;
+                border-radius: 50%;
+            }
+
+            .assets_info_wrapper{
+                width:100%;
+                text-align:center;
+                padding-top:10px;
+            }
+
+            .assets_info_numbers{
+                font-size:18px;
+                display: inline-flex;
+            }
+
+            .assets_info_numbers div{
+                margin-right:7%;
+            }
+
+            .assets_info_text{
+                font-size:14px;
+                opacity: 0.5;
+                margin-top: -5px;
+            }
+        </style>
+        <script>
+            ons.getScriptPage().onInit = function(){
+
+                this.onShow = function(){
+                    fn.User.ajaxWalletHtml('#page-wallet #page-wallet-content')
+                }
+            }
+        </script>
+    </ons-page>
+</template>
+<template id="user-withdraw.html">
+    <ons-page id="user-withdraw">
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button onclick="fn.load('wallet.html')">
+                    <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">余额出金</div>
+        </ons-toolbar>
+        <div id="user-withdraw-content" style="width:100%;height:100%;"></div>
+        <script>
+            ons.getScriptPage().onInit = function(){
+                this.onShow = function(){
+                    fn.User.ajaxWithdrawHtml('#user-withdraw #user-withdraw-content')
+                }
+            }
+        </script>
+    </ons-page>
+</template>
+
+<template id="user-withdraw-history.html">
+    <ons-page id="user-withdraw-history">
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button onclick="fn.load('wallet.html')">
+                    <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">出金记录</div>
+        </ons-toolbar>
+        <div id="user-withdraw-history-content" style="width:100%;height:100%;"></div>
+        <script>
+            ons.getScriptPage().onInit = function(){
+                this.onShow = function(){
+                    fn.User.ajaxWithdrawHistoryHtml('#user-withdraw-history #user-withdraw-history-content')
+                }
+            }
+        </script>
+    </ons-page>
+
+</template>
+<template id="user-deposit-history.html">
+    <ons-page id="user-deposit-history">
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button onclick="fn.load('wallet.html')">
+                    <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">充值记录</div>
+        </ons-toolbar>
+        <div id="user-deposit-history-content" style="width:100%;height:100%;"></div>
+        <script>
+            ons.getScriptPage().onInit = function(){
+                this.onShow = function(){
+                    fn.User.ajaxDepositHistoryHtml('#user-deposit-history #user-deposit-history-content')
+                }
+            }
+        </script>
+    </ons-page>
+</template>
+
+
+
+<template id="user-create.html">
+    <ons-page id="user-create">
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button onclick="fn.load('user-login.html')">
+                    <ons-icon icon="ion-android-person"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">注册</div>
+            <div class="right">
+                <ons-toolbar-button onclick="fn.scanCode()">
+                    <ons-icon icon="ion-qr-scanner"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+        <div id="user-create-content" style="text-align:center; margin-top:30px;"></div>
+        <script>
+            ons.getScriptPage().onInit = function(){
+                this.onShow = function(){
+                    fn.User.getCreateForm('#user-create-content');
+                }
+            }
+        </script>
+    </ons-page>
+</template>
+
+
+<!--实现用户注册-->
+<template id="member-registered.html">
+    <ons-page id="member-registered">
+        <ons-toolbar>
+            <div class="left">
+            <ons-toolbar-button onclick="fn.load('user-login.html')">
+                    <ons-icon icon="ion-android-person"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">会员注册</div>
+            <div class="right">
+                <ons-toolbar-button onclick="scanCode">
+                     <ons-icon icon="ion-qr-scanner"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+        <div id="mumber-registered-content" style="text-align:center; margin-top:30px;"></div>
+        <script>
+                ons.getScriptPage().onInit=function () {
+                    this.onShow = function () {
+                        fn.User.getNumRegistered('#mumber-registered-content')  //实现用户注册的ajax接口
+                    }
+                }
+        </script>
+    </ons-page>
+
+
+</template>
+<!--实现用户找回密码的ui界面以及ajax方法-->
+<template id="forget-password.html">
+    <ons-page id="forget-password">
+        <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button onclick="fn.load('user-login.html')">
+                    <ons-icon icon="ion-android-person"></ons-icon>
+                </ons-toolbar-button>
+        </div>
+        <div class="center">忘记密码-手机身份验证</div>
+        </ons-toolbar>
+        <div id="forget-password-comment" style="text-align:center;">
+            <br><br>
+                <label>请输入您注册的手机号码： </label>
+                 <input id="mobile" name="mobile" value="">
+{#                 <ons-button onclick="fn.User.identity_check()">获取验证码</ons-button> <!--获取-->#}
+               <br><br>
+
+                <label>验证码：</label>
+                <input id="code" name="code" value="">
+                 <ons-button onclick="fn.User.sendcode()">获取验证码</ons-button> <!--验证-->
+                  <br><br>
+                 <label>输入新密码： </label>
+                <input id="newpassword" name="newpassword" value="" type="password">
+                <br><br>
+                 <label>确认新密码： </label>
+                <input id="confirmnewpassword" name="confirmnewpassword" value="" type="password">
+                <br><br>
+            <p style="margin-top:30px">
+                  <ons-button id="do_reset_password" onclick="fn.User.identity_check()">提交</ons-button> <!--验证-->
+            </p>
+        </div>
+    </ons-page>
+</template>
+
+<template id="user-login.html">
+    <ons-page id="user-login">
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button onclick="fn.pushPage({id:'home.html',title:'Home'})">
+                    <ons-icon icon="ion-android-home"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">登录</div>
+            <div class="right">
+                <ons-toolbar-button onclick="fn.pushPage({id:'user-create.html',title:'Register'})">
+                    <ons-icon icon="ion-android-person-add"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+        <div style="text-align:center; margin-top:30px;">
+            <p>
+                <ons-input id="username" modifier="underbar" placeholder="用户名" float></ons-input>
+            </p>
+            <p>
+                <ons-input id="password" modifier="underbar" placeholder="密码" type="password"></ons-input>
+            </p>
+            <p style="margin-top: 30px;">
+                <ons-button onclick="fn.User.login()">登录</ons-button>
+            </p>
+        </div>
+    </ons-page>
+</template>
+
+
+<!--留言板的ui-->
+<template id="message.html">
+    <ons-page id="message">
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button onclick="fn.pushPage({id:'home.html',title:'Home'})">
+                    <ons-icon icon="ion-android-home"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">请留言</div>
+            <div class="right">
+                <ons-toolbar-button onclick="">
+                    <ons-icon icon="ion-android-person-add"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+
+
+<div style="text-align:center;margin-top: 30px">
+    <a>请输入昵称:</a>
+    <p> <ons-input id="user_name" name="user_name" modifier="underbar" placeholder="昵称" float></ons-input></p>
+    <p > 請輸入您的留言:</p>
+
+     <textarea style="margin:0 auto;" rows="10" cols="40" id='comments' name="comments" placeholder="请填写~~~~~"></textarea> <!--將textarea居中显示-->
+
+   </div>
+            <p id="add-new-event" style="margin-top: 30px;text-align:center;">
+                <ons-button id="commit-button" onclick="fn.User.message()">提交</ons-button>
+            </p>
+
+
+        <div id="message-list-content" style="text-align:center; margin-top:30px;"></div>
+
+        <script>
+        ons.getScriptPage().onInit=function () {
+            this.onShow = function () {
+
+                fn.User.getComment('#message-list-content');  //实现获取评论的ajax接口
+
+            }
+        }
+
+
+        </script>
+
+    </ons-page>
+</template>
+
+
+
+<template id="comment_details.html">
+    <ons-page id="comment_details">
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button onclick="fn.load('message.html')">
+                   <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">留言详情</div>
+            <div class="right">
+            </div>
+        </ons-toolbar>
+
+        <div id="comment-details-content" style="text-align:center; margin-top:30px;"></div>
+
+        <script>
+        ons.getScriptPage().onInit=function () {
+            this.onShow = function () {
+
+                fn.User.Commentdetail('#comment-details-content');  //实现获取评论的ajax接口
+
+            }
+        }
+        </script>
+    </ons-page>
+</template>
+
+
+
+<template id="ajax-login.html">
+    <ons-page id="ajax-user-login">
+        <ons-toolbar>
+            <div class="left">
+                  <ons-toolbar-button onclick="fn.pushPage({id:'home.html',title:'Home'})">   <!--左侧实现返回首页的跳转-->
+                    <ons-icon icon="ion-android-home"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">我的登录</div>
+            <div class="right">
+                <ons-toolbar-button onclick="fn.pushPage({id:'user-create.html',title:'Register'})">   <!--右边实现用户注册的跳转-->
+                    <ons-icon icon="ion-android-person-add"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+        <div style="text-align:center; margin-top: 30px;">
+            <p>
+                <ons-input id="username" modifier="underbar" placeholder="user" float></ons-input>
+            </p>
+            <p>
+                <ons-input id="password" modifier="underbar" placeholder="password" type="password"></ons-input>
+            </p>
+            <p style="margin-top: 30px;">
+                <ons-button onclick="fn.User.ajaxlogin()">我的登录</ons-button>
+
+                <!--window.open在原来的窗体中直接跳转：onclick=window.open('https://www.baidu.com')-->
+                <!-- <ons-button onclick="fn.pushPage({id:'forget-password.html',title:'forget_password'})")>找回密码</ons-button> -->
+                <ons-button onclick="document.getElementById('appNavigator').resetToPage('forget-password.html')">找回密码</ons-button>
+            </p>
+
+        </div>
+    </ons-page>
+</template>
+
+
+
+<template id="user-update.html">
+    <ons-page id="user-update">
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button onclick="fn.load('profile.html')">
+                    <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+        <div id="body"></div>
+        <script>
+            ons.getScriptPage().onInit = function(){
+
+                this.onShow = function(){
+                    //fn.checkLogin();
+                    fn.User.ajaxGetProfileHtml('#user-update #body');
+                }
+            }
+        </script>
+
+    </ons-page>
+</template>
+<template id="subscribe.html">
+    <ons-page>
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button onclick="fn.load('home.html')">
+                    <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">
+                红色题材之《启航》
+            </div>
+            <div class="right">
+                <ons-toolbar-button onclick="fn.load('prebuy-fmqk.html')">
+                  <!--<ons-icon icon="ion-android-search"></ons-icon> -->
+                    认购
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+        <div style="width:100%;height:100%;">
+            <img src="{{static_url('images/qf.jpg')}}" width="100%" height="auto">
+        </div>
+        <script>
+            ons.getScriptPage().onInit = function(){
+
+                this.onShow = function(){
+                    //fn.checkLogin();
+                }
+            }
+        </script>
+    </ons-page>
+</template>
+<template id="prebuy-fmqk.html">
+    <ons-page id="prebuy-fmqk">
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button onclick="fn.load('subscribe.html')">
+                    <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">
+                《启航》认购
+            </div>
+            <div class="right">
+                <ons-toolbar-button onclick="fn.open()">
+                  <ons-icon icon="md-menu"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+        <ons-card style="text-align:center">
+            <p>
+                <ons-input id="sub-qty"  modifier="underbar" placeholder="认购克数" float></ons-input>
+            </p>
+            <p>
+                <ons-input id="sub-price" modifier="underbar" placeholder="500.00元/克" float readonly="readonly"></ons-input>
+            </p>
+
+            <p style="margin-top:30px;">
+                <ons-button onclick="subbuy()">认购</ons-button>
+            </p>
+
+        </ons-card>
+        <ons-card>
+            <p style="font-size:12px;">
+                认购需知：<br>
+                1、点击【认购】即表示您对此次认购相关事宜全部理解并接受本平台相关服务条款<br>
+                2、认购订单生成之后，请于5日内将与认购商品等额的保证金转帐到【保证金专户】<br>
+                3、转帐时请备注好您注册时的手机号码，以备查证<br>
+            </p>
+        </ons-card>
+        <script>
+            ons.getScriptPage().onInit = function(){
+                this.onShow = function(){
+                    //fn.checkLogin();
+                }
+            }
+
+            var subbuy = function(){
+                var qty = parseFloat($('#prebuy-fmqk #sub-qty').val());
+                var price = 500.00;
+
+                if(isNaN(qty) || qty >0.4 || qty <0.2){
+                    ons.notification.alert('认购克数仅限于0.2~0.4之间的两位数');
+                    return;
+                }
+
+                var subed = localStorage.getItem(fn.User.getLoginId()+':sub-czqh');
+
+                if( subed ){
+                    ons.notification.alert('每人仅限认购一份!');
+                    return;
+                }
+
+                    $.ajax({
+                        method: 'post',
+                        url:'/user/subbuy',
+                        data: {qty: qty, price: price,user_id:fn.User.getLoginId(),p_no:'CZQH'},
+                        dataType:'json'
+                    }).done(function(data){
+                        if(data.result == 'success'){
+                            localStorage.setItem(localStorage.getItem('wx-user-id')+':sub-czqh',1);
+                    ons.notification.alert('认购编号#' + data.msg + ',请于3日及时付款,付款时请备注注册时的手机号码!').then(function(){fn.load('pay-info.html');});
+
+                        }else{
+                            ons.notification.alert(data.msg);
+                        }
+                    });
+            }
+        </script>
+    </ons-page>
+</template>
+<template id="pay-info.html">
+    <ons-page>
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button onclick="fn.load('wallet.html')">
+                    <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">
+                付款信息
+            </div>
+            <div class="right">
+                <ons-toolbar-button onclick="fn.open()">
+                  <ons-icon icon="md-menu"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+        <ons-card>
+            <ons-list>
+                <ons-list-header>
+                    银行转帐
+                </ons-list-header>
+                <ons-list-item>
+                    <div class="left">帐户名</div>
+                    <div class="right" style="font-size:14px;">苏州吾品玉艺工艺礼品有限公司</div>
+                </ons-list-item>
+                <ons-list-item>
+                    <div class="left">开户行</div>
+                    <div class="right" style="font-size:14px;">民生银行姑苏支行</div>
+                </ons-list-item>
+                <ons-list-item>
+                    <div class="left">帐号</div>
+                    <div class="right" style="font-size:14px;">696303850</div>
+                </ons-list-item>
+            </ons-list>
+        </ons-card>
+	<div style="color:red;padding:5px 10px;"><strong>充值付款时，请务必备注此笔款项所要充值的【会员帐号名】或【会员帐号手机号码】，以备快速核对与确认!</strong></div>
+        <ons-card>
+            <ons-list>
+                <ons-list-header>
+                    支付宝付款
+                </ons-list-header>
+                <ons-list-item>
+                    <div class="left">帐号</div>
+                    <div class="right" style="font-size:14px;">412194314@qq.com</div>
+                </ons-list-item>
+            </ons-list>
+            <div class="center" style="padding:40px;">
+                <img src="{{static_url('images/alipay.png')}}" width="90%" height="90%" />
+            </div>
+        </ons-card>
+    </ons-page>
+</template>
+
+
+<template id="user-orders.html">
+    <ons-page id="user-orders">
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button onclick="fn.load('profile.html')">
+                    <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">订单记录</div>
+            <div class="right">
+                <ons-toolbar-button onclick="">
+                    <ons-icon icon="fa-filter"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+
+        <div class="content" id="user-orders-content"></div>
+
+       <script>
+            ons.getScriptPage().onInit = function(){
+
+                this.onShow = function(){
+                    //fn.checkLogin();
+                    fn.User.ajaxOrdersHtml('#user-orders #user-orders-content');
+                }
+            }
+        </script>
+    </ons-page>
+</template>
+
+
+<!--新增加收货地址的ui-->
+
+<template id="shop-address.html">
+    <ons-page id="shop-address">
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button onclick="fn.load('profile.html')">
+                    <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">收货地址</div>
+            <div class="right">
+                <ons-toolbar-button onclick="">
+                    <ons-icon icon="md-menu"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+
+        <div class="content" id="add-address">
+
+                    <ons-card>
+
+
+            <ons-button id="add-new-address" style="line-height: 30px;" modifier="large"  onclick="fn.load('add-new-shopaddress.html')">新增收货地址</ons-button>
+
+
+        </ons-card>
+
+        </div>
+
+    </ons-page>
+</template>
+
+<!--显示详细的新增收货地址-->
+<template id="add-new-shopaddress.html">
+    <ons-page id="add-new-shopaddress">
+        <ons-toolbar>
+             <div class="left">
+                <ons-toolbar-button onclick="fn.load('shop-address.html')">
+                    <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">新增收货地址</div>
+            <div class="right">
+                <ons-toolbar-button onclick="">
+                    <ons-icon icon="md-menu"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+        <div class="content" id="add-new-address"></div>
+        <script>
+            ons.getScriptPage().onInit = function(){
+                this.onShow = function(){
+                    //fn.checkLogin();
+                    fn.User.show_shop_address('#add-new-shopaddress #add-new-address');
+                }
+            }
+        </script>
+
+</ons-page>
+</template>
+
+
+<template id="b2c-products.html">
+    <ons-page id="b2c-load-more-page">
+        <ons-toolbar>
+            <div class="center">商城首页</div>
+        </ons-toolbar>
+
+        <ons-list id="b2c-product-list"></ons-list>
+
+        <div class="after-list">
+          <ons-icon icon="fa-spinner" size="26px" spin></ons-icon>
+        </div>
+    <script>
+      document.querySelector('#b2c-load-more-page').addEventListener('init', function () {
+          b2c.listPage.init();
+      });
+      document.getElementById('b2c-load-more-page').onInfiniteScroll = function(done){
+          b2c.listPage.loadMoreProducts(done)
+      }
+    </script>
+
+    <style>
+      .after-list {
+        margin: 20px;
+        text-align: center;
+      }
+    </style>
+    </ons-page>
+</template>
+
+<template id="b2c-product-detail.html">
+    <ons-page id="b2c-product-detail">
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button onclick="fn.load('b2c-products.html')">
+                    <ons-icon icon="ion-ios-arrow-back"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">商品详情</div>
+        </ons-toolbar>
+        <ons-dialog id="dialog_1">
+          <div style="text-align: center; padding: 10px;">
+            <p>
+              OK
+              <p>
+                <p>
+                  <ons-button onclick="hideDialog('dialog_1')">关闭</ons-button>
+                </p>
+          </div>
+        </ons-dialog>
+        <div id="render-product-detail"></div>
+    <script>
+        function hideDialog(id){
+                    document.getElementById('dialog_1').hide();
+        }
+        ons.getScriptPage().onInit = function(){
+            this.onShow = function(){
+                const callback = function(data){
+                    $("#render-product-detail").html(data);
+                    $("#do-buy-btn").click(function(){
+                        document.getElementById('dialog_1').show();
+                    });
+                }
+                b2c.productDetail.load(callback);
+            }
+        }
+    </script>
+
+    <style>
+      .after-list {
+        margin: 20px;
+        text-align: center;
+      }
+    </style>
+    </ons-page>
+</template>
+
+<ons-modal direction="up">
+  <div style="text-align: center">
+    <p>
+      <ons-icon icon="md-spinner" size="28px" spin></ons-icon> Loading...
+    </p>
+  </div>
+</ons-modal>
+</body>
+</html>

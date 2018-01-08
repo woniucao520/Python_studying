@@ -1,0 +1,23 @@
+<ons-row style="font-size:12px;color:#5d6572;text-align:left;margin-bottom:5px;">
+    <ons-col width="35%">品名/代码</ons-col>
+    <ons-col width="30%">市值/持仓</ons-col>
+    <ons-col width="35%">浮盈/收益</ons-col>
+</ons-row>
+{% if len(assets) %}
+{% for p_no, name, volume, cost, market_value, gains, win_value in assets %}
+<ons-row>
+    <ons-col width="35%" style="">{{name}}<span style="display:block;font-size:14px;">{{p_no}}</span></ons-col>
+    <ons-col width="30%" style="">{{market_value}}<span  style="display:block;font-size:14px;">{{volume}}</span></ons-col>
+    <ons-col width="35%" style="">{{gains}}%<span style="display:block;font-size:14px;">{{win_value}}</span></ons-col>
+</ons-row>
+{% end %}
+{% else %}
+暂无持仓数据
+{% end %}
+<style>
+    #exchange-assets ons-row{
+        color:white;
+        padding:5px;
+        border-bottom:1px solid #8e989d;
+    }
+</style>

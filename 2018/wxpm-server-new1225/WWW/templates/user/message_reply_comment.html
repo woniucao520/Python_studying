@@ -1,0 +1,13 @@
+        <div id="list_add_message">
+            {% if not len(add_message)%}
+                <ons-card>
+                暂无回复
+                </ons-card>
+            {% else %}
+                {% for user_name,comment,create_at in add_message %}
+                    <p> {{ user_name }}</p>
+                    <p>{{ comment }}</p>
+                    <p>{{ create_at }}</p>
+                {% end%}
+            {% end%}
+        </div>

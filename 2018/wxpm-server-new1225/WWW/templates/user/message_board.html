@@ -1,0 +1,92 @@
+
+<ons-list>
+
+{% for message_list in message_lists %}
+    <ons-list-item >
+     <div class="left" onclick="">
+            <img class="list-item__thumbnail" src="http://placekitten.com/g/40/40" />
+        </div>
+        <div class="center" >
+
+            <div  data-topic-id="{{ message_list[0].id }}">
+            <span class="list-item__title" id="h-user-title">{{message_list[0].user_name}}</span>
+            <span class="list-item__subtitle" id="h-user-subtitle">{{message_list[0].comment}}</span>
+            <span class="list-item__subtitle" id="h-user-subtitle">{{message_list[0].created_at}}</span>
+
+            <script>
+                $(document).ready(function () {
+                    $('[data-topic-id]').unbind().bind('click',function () {
+                    var message_id = $(this).attr('data-topic-id');   //this代表当前元素
+{#                        alert(message_id);return;#}
+                        localStorage.setItem('message_id',message_id);
+{#                        localStorage.setItem('delete_id',message_id);#}
+                        fn.load('comment_details.html');
+                });
+                });
+            </script>
+            </div>
+
+
+        <ons-list-item id="reply_message_list">
+            <div id="list_add_message">
+                {% if len( message_list) == 1%}
+                    <span class="list_item__subtitle" id = "no_message_list">
+                    暂无~~zi~~回复
+                    </span>
+                {% else %}
+                    {% for children_list in children_lists %}
+                            {% if children_list[0].parentid == message_list[0].id %}
+                                {% for i in children_list %}
+                                <ul>
+                                    <li>回复人： {{ i.user_name}}
+                                    回复内容：{{ i.comment}}
+                                    回复时间：{{ i.created_at}}</li>
+                                </ul>
+                                {% end %}
+                            {% end %}
+                    {% end%}
+                {% end%}
+
+            </div>
+        </ons-list-item>
+
+        </div>
+
+
+
+
+
+        <div class="right" >
+             <ons-button class="corner-button" addition_id ="{{ message_list[0].id }}"  onclick="fn.User.Addition(this)" >
+{#                <ons-icon size="20px" icon="ion-calendar"></ons-icon>#}回复
+             </ons-button>
+            <ons-button class="top_message" top_message_id="{{message_list[0].id  }}" onclick="fn.User.MessageTop(this)">置顶</ons-button>
+            <ons-button class="corner-button" remove_id ="{{ message_list[0].id  }}"  modifier="quiet"   onclick="fn.User.MessageDelete(this)" >
+                <ons-icon icon="ion-ios-more,material:ion-android-more-vertical" ></ons-icon>
+            </ons-button>
+
+        {% if (int(user_id),int(message_list[0].id)) in check_message_praise  %}
+            <ons-button class="corner-button" praise_id ="{{ message_list[0].id }}"  modifier="quiet"   onclick="fn.User.GivePraise(this)" >
+                <ons-icon size="20px" style="color: red" icon="md-face"><a style="color:red">[{{message_list[0].praise_num }}]</a>
+                </ons-icon>
+            </ons-button>
+        {% else %}
+            <ons-button class="corner-button" praise_id ="{{ message_list[0].id }}"  modifier="quiet"   onclick="fn.User.GivePraise(this)" >
+                <ons-icon size="20px"  icon="md-face"><a style="color:blue">[{{message_list[0].praise_num }}]</a>
+                </ons-icon>
+            </ons-button>
+
+        {% end %}
+        </div>
+
+    </ons-list-item>
+    {% end%}
+</ons-list>
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+{% if len(histories) %}
+    {% for id, bank_no, amount, status, created_at in histories %}
+    <ons-card>
+        <ons-row>
+            <ons-col width="50%" style="font-size:14px;">{{bank_no}}<span style="display:block;">{{created_at}}</span></ons-col>
+            <ons-col width="30%" style="text-align:right;line-height:36px;">-{{amount}}</ons-col>
+            <ons-col width="20%" style="text-align:center;line-height:36px;">
+                {% if status==0 %}
+                    <span style="color:green;">审核中</span>
+                {% elif status == 1 %}
+                    <span style="color:gray;">已取消</span>
+                {% elif status == 2 %}
+                    <span style="color:red;">被拒绝</span>
+                {% else %}
+                    <span style="color:orange;">已完成</span>
+                {% end %}
+
+            </ons-col>
+        </ons-row>
+    </ons-card>
+    {% end%}
+{% else %}
+暂无出金记录
+{% end %}

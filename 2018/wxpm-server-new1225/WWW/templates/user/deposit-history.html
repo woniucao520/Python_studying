@@ -1,0 +1,54 @@
+{% if len(histories) %}
+    {% for id, amount, frozen_part, status, source, can_deal, can_withdraw, created_at in histories %}
+        <ons-card>
+            <ons-row>
+                <ons-col>{{created_at}}</ons-col>
+            </ons-row>
+            <ons-row style="margin:5px 0; font-size:14px; color:gray;">
+                <ons-col>金额/冻结</ons-col><ons-col>状态/来源</ons-col><ons-col>可交易/可出金</ons-col>
+            </ons-row>
+            <ons-row>
+                <ons-col>{{amount}}<span style="display:block;">{{frozen_part}}</span></ons-col>
+                <ons-col>
+                    {% if status==0 %}
+                        审核中
+                    {% elif status==1 %}
+                    <span style="color:green;">已激活</span>
+                    {% elif status==2 %}
+                    <span style="color:red;">已冻结</span>
+                    {% end %}
+                    <span style="display:block;">
+                    {% if source == 0 %}
+                        网银转帐
+                    {% elif source == 1%}
+                        支付宝
+                    {% elif source == 2 %}
+                        微信
+                    {% elif source == 3%}
+                        系统赠送
+                    {% elif source ==4 %}
+                        其它
+                    {% end %}
+                    </span>
+                </ons-col>
+                <ons-col style="text-align:center;">
+                    {% if can_deal == 0%}
+                        否
+                    {% else %}
+                        是
+                    {% end %}
+                    <span style="display:block;">
+                    {% if can_withdraw == 0%}
+                        否
+                    {% else %}
+                        是
+                    {% end %}
+                    </span>
+                </ons-col>
+            </ons-row>
+        </ons-card>
+    {% end %}
+
+{% else %}
+暂无充值记录
+{% end %}

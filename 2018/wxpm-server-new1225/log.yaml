@@ -1,0 +1,61 @@
+version: 1
+formatters:
+  brief:
+    format: '%(message)s'
+  default:
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    datefmt: '%Y-%m-%d %H:%M:%S'
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: brief
+    stream: ext://sys.stderr
+  file:
+    class: logging.handlers.RotatingFileHandler
+    level: DEBUG
+    formatter: default
+    filename: 'Logs/sql.log'
+    maxBytes: 10485760
+    backupCount: 20
+  file2:
+    class: logging.handlers.RotatingFileHandler
+    level: DEBUG
+    formatter: default
+    filename: 'Logs/web.log'
+    maxBytes: 10485760
+    backupCount: 20
+  file3:
+    class: logging.handlers.RotatingFileHandler
+    level: DEBUG
+    formatter: default
+    filename: 'Logs/matching-server-access.log'
+    maxBytes: 10485760
+    backupCount: 20
+  file4:
+    class: logging.handlers.RotatingFileHandler
+    level: DEBUG
+    formatter: default
+    filename: 'Logs/tornado.log'
+    maxBytes: 10485760
+    backupCount: 20
+  file5:
+    class: logging.handlers.RotatingFileHandler
+    level: DEBUG
+    formatter: default
+    filename: 'Logs/mysql-pool.log'
+    maxBytes: 10485760
+    backupCount: 20
+loggers:
+  sqlalchemy.engine:
+    handlers: [file]
+  sqlalchemy.pool:
+    handlers: [console, file5]
+  tornado.access:
+    handlers: [console, file2]
+  tornado.application:
+    handlers: [console, file4]
+  tornado.general:
+    handlers: [console, file4]
+  server.matching:
+    handlers: [console, file3]

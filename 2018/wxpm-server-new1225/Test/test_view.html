@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+  <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="add_message" style="text-align:left;margin-left: 50px;margin-top: 30px">
+    <a>请输入昵称:</a>
+    <a> <ons-input id="user_name" name="user_name" modifier="underbar" placeholder="昵称" float></ons-input></a>
+    <p > 請輸入您的留言:</p>
+
+     <textarea  rows="10" cols="40" id='comments' name="comments" placeholder="请填写~~~~~"></textarea> <!--將textarea居中显示-->
+
+
+
+        <p id="add-new-event" style="margin-left: 6.5cm">
+            <ons-button id ="commit-button" onclick="fn.User.addmessage(this)">提交</ons-button>
+        </p>
+
+</div>
+</body>
+</html>
+
+

@@ -1,0 +1,123 @@
+<ons-row style="height:50px;">
+    <ons-col width="25%"></ons-col>
+    <ons-col width="50%" style="text-align:center;line-height:50px;">
+        <ons-input id="product-name-code" readonly="readonly"  placeholder="拍品代码" value="{{info['name']}}({{info['p_no']}})" style="text-align:center;height:100%;color:white;"></ons-input>
+    </ons-col>
+    <ons-col width="25%" style=""></ons-col>
+</ons-row>
+<ons-row style="height:50px;">
+    <ons-col width="25%" style="text-align:center;background-color:#3b4252;color:#9098a5;" onclick="fn.Product.quickValue(-0.01, '#sale-product-price',{{dsp}}, 2)">
+        <ons-icon icon="fa-minus"></ons-icon>
+        <div>0.01</div>
+    </ons-col>
+    <ons-col width="50%" style="text-align:center;line-height:50px;">
+        <ons-input id="sale-product-price" placeholder="卖出价" style="text-align:center;height:100%;color:white;" value="{{cp}}"></ons-input>
+    </ons-col>
+    <ons-col width="25%" style="text-align:center;background-color:#3b4252;color:#9098a5;" onclick="fn.Product.quickValue(0.01, '#sale-product-price', {{usp}}, 2)">
+        <ons-icon icon="fa-plus"></ons-icon>
+        <div>0.01</div>
+    </ons-col>
+</ons-row>
+<ons-row style="height:50px;">
+    <ons-col width="25%" style="text-align:center;background-color:#3b4252;color:#9098a5;" onclick="fn.Product.quickValue(-10, '#sale-product-qty', 0 ,0)">
+        <ons-icon icon="fa-minus"></ons-icon>
+        <div>10</div>
+    </ons-col>
+    <ons-col width="50%" style="text-align:center;line-height:50px;">
+        <ons-input id="sale-product-qty" placeholder="卖出量" style="text-align:center;height:100%;" value="0"></ons-input>
+    </ons-col>
+    <ons-col width="25%" style="text-align:center;background-color:#3b4252;color:#9098a5;" onclick="fn.Product.quickValue(10, '#sale-product-qty', {{csp}}, 0)">
+        <ons-icon icon="fa-plus"></ons-icon>
+        <div>10</div>
+    </ons-col>
+</ons-row>
+
+<ons-row style="color:#626e7c;height:40px;line-height:40px;">
+    <ons-col width="15%">最新:</ons-col>
+    <ons-col width="35%">
+        <span id="current-price">{{cp}}</span>&nbsp;&nbsp;<span id="current-gains">{{info['gains']}}%</span>
+    </ons-col>
+    <ons-col width="20%">可卖:</ons-col>
+    <ons-col width="30%">{{csp}}</ons-col>
+</ons-row>
+
+<ons-row style="height:80px;line-height:80px;background-color:#3b4252;color:white;">
+    <ons-col width="70%" style="font-size:32px;background-color:#0b5da6;" onclick="fn.Product.doSale()">
+        卖出
+    </ons-col>
+    <ons-col style="margin:5px 0; line-height:70px; border-right:1px solid gray;" onclick="fn.Product.reloadSalePage()">刷新</ons-col>
+</ons-row>
+
+<div id="exchange-sale-delegate" style="margin:5px 10px;color:#96a7b4;">
+    <ons-row>
+        <ons-col>涨停</ons-col>
+        <ons-col>{{usp}}</ons-col>
+        <ons-col></ons-col>
+        <ons-col>跌停</ons-col>
+        <ons-col>{{dsp}}</ons-col>
+        <ons-col></ons-col>
+    </ons-row>
+    <ons-row>
+        <ons-col>
+            {% for i in range(len(bi))%}
+            <ons-row>
+                <ons-col>卖{{bi[i]}}</ons-col>
+                <ons-col id="s_d_price_{{i}}" style="text-align:right;">
+                    {% if i< len(sd5)%}
+                        {{round(sd5[i][1],2)}}
+                    {% else %}
+                        --
+                    {% end %}
+                </ons-col>
+                <ons-col id="s_d_volume_{{i}}" style="text-align:right;">
+                    {% if i< len(sd5)%}
+                        {{int(sd5[i][2])}}
+                    {% else %}
+                        --
+                    {% end %}
+                </ons-col>
+            </ons-row>
+            {% end %}
+        </ons-col>
+        <ons-col>
+            {% for i in range(len(bi)) %}
+            <ons-row>
+                <ons-col>买{{bi[i]}}</ons-col>
+                <ons-col id="b_d_price_{{i}}" style="text-align:right;">
+                    {% if i< len(bd5)%}
+                        {{round(bd5[i][1],2)}}
+                    {% else %}
+                        --
+                    {% end %}
+                </ons-col>
+                <ons-col id="b_d_volume_{{i}}" style="text-align:right;">
+                    {% if i< len(bd5)%}
+                        {{int(bd5[i][2])}}
+                    {% else %}
+                        --
+                    {% end %}
+                </ons-col>
+            </ons-row>
+            {% end %}
+        </ons-col>
+    </ons-row>
+</div>
+<style>
+    #exchange-sale .page__background{
+        background-color:#303645;
+    }
+
+    #exchange-sale ons-col{
+        text-align:center;
+    }
+    #exchange-sale input{
+        height:100%;
+        text-align:center;
+        color:white;
+    }
+
+    #exchange-sale-delegate ons-row{
+        height:40px;
+        line-height:40px;
+    }
+</style>

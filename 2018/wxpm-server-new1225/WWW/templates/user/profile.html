@@ -1,0 +1,60 @@
+<ons-list-header>身份信息</ons-list-header>
+<ons-list style="margin-top:20px;">
+    <ons-list-item>
+        <div class="left">
+            用户名
+        </div>
+        <div class="right" id="username">{{user.login_name}}</div>
+    </ons-list-item>
+    <ons-list-item tappable onclick="fn.User.ajaxUpdateProfile('real_name','{{user.real_name}}')">
+        <div class="left">姓名</div>
+        <div class="right" id="real_name">{{user.real_name}}</div>
+    </ons-list-item>
+    <ons-list-item tappable onclick="fn.User.ajaxUpdateProfile('mobile','{{user.mobile}}')">
+        <div class="left">手机</div>
+        <div class="right" id="mobile">{{user.mobile}}</div>
+    </ons-list-item>
+    <ons-list-item tappable onclick="fn.User.ajaxUpdateProfile('id_no','{{user.id_no}}')">
+        <div class="left">身份证</div>
+        <div class="right" id="id_no">{{user.id_no}}</div>
+    </ons-list-item>
+</ons-list>
+
+<ons-list-header>银行信息</ons-list-header>
+{% if len(banks) %}
+    {% for bank_no,bank_account_name,bank_province,bank_city,bank_name,bank_branch_name in banks %}
+    <ons-list>
+        <ons-list-item>
+            <div class="left">银行帐号</div>
+            <div class="right" id="bank_no">{{bank_no}}</div>
+        </ons-list-item>
+        <ons-list-item>
+            <div class="left">帐号名称</div>
+            <div class="right" id="bank_account_name">{{bank_account_name}}</div>
+        </ons-list-item>
+        <ons-list-item>
+            <div class="left">省份/城市</div>
+            <div class="right" id="bank_province_city">{{bank_province}}/{{bank_city}}</div>
+        </ons-list-item>
+        <ons-list-item>
+            <div class="left">开户银行</div>
+            <div class="right" id="bank_name">{{bank_name}}</div>
+        </ons-list-item>
+        <ons-list-item>
+            <div class="left">所在支行</div>
+            <div class="right" id="bank_branch_name">{{bank_branch_name}}</div>
+        </ons-list-item>
+    </ons-list>
+    <ons-list-header></ons-list-header>
+    {% end %}
+{% end %}
+<ons-list>
+    <ons-list-item tappable modifier="chevron" onclick="fn.load('user-new-bank.html')">
+        <div class="left">
+            <ons-icon icon="ion-plus-circled"></ons-icon>
+        </div>
+        <div class="center">
+            新增
+        </div>
+    </ons-list-item>
+</ons-list>

@@ -1,0 +1,59 @@
+            <ons-card>
+
+            <div style="text-align: left">
+                <p>
+                    <ons-input id="consignee" modifier="underbar" placeholder="收件人" style="width: 100%" float></ons-input>
+                </p>
+                <p>
+                    <ons-input id="mobile" modifier="underbar" placeholder="手机号" style="width: 100%" float></ons-input>
+                </p>
+                <p>选择所在地区</p>
+
+                <p>
+                    <ons-select id="sel-province" modifier="underbar" onclick="fn.User.Getprovince()">
+                        <option value="0">选择省</option>
+                {% for area_province in area_provinces %}
+
+                        <option value="{{ area_province.id }}">{{ area_province.name }}</option>
+
+                {% end %}
+                    </ons-select>
+                </p>
+
+                <p>
+                    <ons-select id="sel-city" modifier="underbar">
+                        <option value="0">选择城市</option>
+                {% for area_city in area_citys %}
+{#                {% if area_city.parent == provinceid %}#}
+
+                        <option value="{{ area_city.id }}">{{ area_city.name }}</option>
+{#                {% end %}#}
+                {% end %}
+                    </ons-select>
+                </p>
+                <p>
+                    <ons-select id="sel-district" modifier="underbar">
+                        <option value="0">选择区/县</option>
+                    </ons-select>
+                </p>
+
+                <p>
+                    <ons-input id="address" modifier="underbar" placeholder="详细地址" style="width: 100%" float></ons-input>
+                </p>
+                <p>
+                    <ons-input id="zipcode" modifier="underbar" placeholder="邮编" style="width: 100%" float></ons-input>
+                </p>
+                <p>
+                    <label class="left">
+                        <ons-checkbox input-id="check-set-default"></ons-checkbox>
+                    </label>
+                    <label for="check-set-default" class="center">
+                        设为默认
+                    </label>
+                </p>
+                <p>
+                     <ons-button modifier="large" id="submit-new-address" onclick="fn.User.checkaddress()">确定</ons-button>
+                </p>
+            </div>
+
+        </ons-card>

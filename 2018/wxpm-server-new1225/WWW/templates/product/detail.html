@@ -1,0 +1,180 @@
+<div id="content">
+    <div class="current-price-up" id="current-price-up">{{info['current_price']}}</div>
+    <div class="price-change-up"><span class="price-delta" id="price-delta">{{info['delta']}}</span>
+        <span class="price-gains" id="price-gains">{{info['gains']}}%</span>
+    </div>
+
+    <div class="general-data" id="general-data-container">
+        <ons-row>
+            <ons-col style="color:gray;">今开</ons-col>
+            <ons-col id="open-price">{{info['open_price']}}</ons-col>
+            <ons-col style="color:gray;">最高</ons-col>
+            <ons-col id="max-price">{{info['max_price']}}</ons-col>
+            <ons-col style="color:gray;">成交量</ons-col>
+            <ons-col id="total-volume">{{info['total_volume']}}</ons-col>
+        </ons-row>
+        <ons-row>
+            <ons-col style="color:gray;">换手率</ons-col>
+            <ons-col id="turn">{{info['turn']}}%</ons-col>
+            <ons-col style="color:gray;">最低</ons-col>
+            <ons-col id="min-price">{{info['min_price']}}</ons-col>
+            <ons-col style="color:gray;">成交额</ons-col>
+            <ons-col id="total-amount">
+                {% if float(info['total_amount']) > 10000 %}
+                    {{round(float(info['total_amount'])/10000.00,2)}}万
+                {% else %}
+                    {{info['total_amount']}}
+                {% end %}
+            </ons-col>
+        </ons-row>
+    </div>
+    <div id="chart-data-container">
+    <div id="data-panel">
+        <ons-row style="text-align:center;background-color:#181b25;color:#7c8b97;">
+            <ons-col class="active" onclick="fn.toggleActiveTab(this,'active');fn.Product.switchCanvas('#data-canvas-time','#data-canvas-k');">分时</ons-col>
+            <ons-col onclick="fn.toggleActiveTab(this,'active');fn.Product.switchCanvas('#data-canvas-k','#data-canvas-time');">日K</ons-col>
+        </ons-row>
+    </div>
+    <div id="data-canvas-time" style="width:100%; height:400px;display:none;"></div>
+        <div id="data-canvas-k" style="width:100%; height:400px;display:none;"></div>
+    <div id="sale-buy-delegate" style="margin:5px 10px;">
+        <ons-row>
+            <ons-col>
+                {% for i in range(len(bi))%}
+                <ons-row>
+                    <ons-col>卖{{bi[i]}}</ons-col>
+                    <ons-col id="s_d_price_{{i}}" style="text-align:right;">
+                        {% if i< len(sd5)%}
+                            {{round(sd5[i][1],2)}}
+                        {% else %}
+                            --
+                        {% end %}
+                    </ons-col>
+                    <ons-col id="s_d_volume_{{i}}" style="text-align:right;">
+                        {% if i< len(sd5)%}
+                            {{int(sd5[i][2])}}
+                        {% else %}
+                            --
+                        {% end %}
+                    </ons-col>
+                </ons-row>
+                {% end %}
+            </ons-col>
+            <ons-col>
+                {% for i in range(len(bi)) %}
+                <ons-row>
+                    <ons-col>买{{bi[i]}}</ons-col>
+                    <ons-col id="b_d_price_{{i}}" style="text-align:right;">
+                        {% if i< len(bd5)%}
+                            {{round(bd5[i][1],2)}}
+                        {% else %}
+                            --
+                        {% end %}
+                    </ons-col>
+                    <ons-col id="b_d_volume_{{i}}" style="text-align:right;">
+                        {% if i< len(bd5)%}
+                            {{int(bd5[i][2])}}
+                        {% else %}
+                            --
+                        {% end %}
+                    </ons-col>
+                </ons-row>
+                {% end %}
+            </ons-col>
+        </ons-row>
+
+    </div>
+
+    <div id="info-panel" style="margin-top:20px;">
+        <div id="info-panel-nav">
+            <ons-row style="text-align:center;background-color:#181b25;color:#7c8b97;">
+                <ons-col class="active">简介</ons-col>
+                <ons-col>公告</ons-col>
+                <ons-col></ons-col>
+                <ons-col></ons-col>
+            </ons-row>
+        </div>
+        <div id="info-panel-content">
+            <img src="{{static_url('images/sg/c1.jpg')}}" width="100%" height="100%">
+        </div>
+    </div>
+</div>
+
+<style>
+    .page__background{
+        background-color:#1d212b;
+    }
+
+    .page__content{
+        color:white;
+    }
+    .ripple{
+        border-right:1px solid #262c38;
+    }
+
+    #content .current-price-up{
+        padding-left:10px;
+        font-size:36px;
+        color:red;
+    }
+
+    #content .current-price-down{
+        padding-left:10px;
+        font-size:36px;
+        color:green;
+    }
+
+    #content .price-change-up{
+        padding-left:10px;
+        background-color:red;
+        border-top-right-radius:5px;
+        border-bottom-right-radius:5px;
+        width:40%;
+    }
+
+    #content .price-change-down{
+        padding-left:10px;
+        background-color:green;
+        border-top-right-radius:5px;
+        border-bottom-right-radius:5px;
+        width:40%;
+    }
+
+    #content .price-delta{
+        padding-right:20px;
+    }
+
+    .general-data{
+        margin:5px 10px;
+    }
+
+    #data-panel ons-col,
+    #info-panel ons-col{
+        padding: 10px 0;
+    }
+
+    #data-panel ons-col.active,
+    #info-panel ons-col.active{
+        color:white;
+        background-color:#373e4d;
+    }
+
+    #sale-buy-delegate ons-col{
+        text-align:center;
+    }
+
+</style>
+
+<script>
+
+    var x_times = {% raw x %};
+    var d_price = {% raw dp %};
+    var a_price = {% raw ap %};
+    var d_volume = {% raw dv %};
+    var k_data = {% raw kd %};
+
+
+    var timeChartObj = fn.Product.timeChartInit('data-canvas-time', x_times, d_price, a_price, d_volume);
+    var kChartObj = fn.Product.KChartInit('data-canvas-k',k_data);
+
+</script>
