@@ -1,0 +1,752 @@
+*{
+    padding: 0;/*为了消除默认div之间的间距*/
+    margin: 0;
+}
+
+body{
+    background: #ECECEC;
+}
+.container{     /*始终使得元素居中显示的一个容器*/
+    display: block;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+}
+
+.clear-float:after,  /*伪类，清除浮动*/
+.clear-float:before{
+    content: " ";
+    display: block;
+    clear: both;
+
+}
+
+/*top部分，主要难点：
+1：如何将h4标签旁边嵌入小图标
+2：由于高度塌陷，设置背景色失效，解决办法，经过搜索清除浮动*/
+
+.top{
+
+    background: #000;
+    height: 28px/*为何设置成百分比，失效：比如10%，设置padding-top无效*/
+
+}
+
+.cont-right{
+    float: right;
+
+}
+.cont-text{
+    display: inline-block;
+}
+/*嵌套了一层div class=cont-text,不然浮动后，顺序相反*/
+.cont-text  h4{
+    display: inline;
+    font-size: 12px;
+    color: #ffffff;
+    font-weight: normal;
+    padding-left: 5px;
+    line-height: 28px;  /*如何使文字，垂直居中*/
+
+}
+/*给文字右侧添加logo*/
+.designer{
+    background: url(../imgs/index01.png) no-repeat left ;
+
+}
+.visit{
+    background: url(../imgs/index02.png) no-repeat  left;
+    width: 60px;
+
+}
+.iwant{
+    background: url(../imgs/index02.png) no-repeat  left;
+    padding-right: 10px;
+
+    border-right: #ff8600 1px solid;/*右侧添加下划线*/
+}
+
+/*中间导航栏部分*/
+.nav{
+    background: #ffffff;   /*为何给他设置的背景会失效呢，是由于浮动的原因么*/
+    padding-top: 20px;
+    text-align: center;
+    border: 2px #3b5998 solid; /*我加了边框线为了能看出来*/
+    height: 70px;
+}
+
+.logo-left{
+    float: left;
+    display: inline;
+}
+
+/*重点的右部分导航栏*/
+
+
+.nav-right ul{
+    list-style-type: none; /*删除原点*/
+    float: right;
+     margin-top: 15px; /*使得该导航栏居中显示*/
+}
+
+li{
+    display: inline-block;/*行内块元素*/
+
+}
+
+li a{
+    display: block;
+    text-decoration: none; /*清除文字原来的大小*/
+    font-size: 16px;
+    font-weight: normal;
+    color: #333;
+    text-align: center;
+    padding-left: 30px;
+
+    -webkit-transition: color 200ms;  /*字体颜色切换的过渡*/
+    -o-transition: color 200ms;
+    transition: color 200ms;
+}
+.nav-text{
+    display: inline;
+}
+
+/*鼠标滑过的颜色变化*/
+li a.active{
+    color:#FF8600;
+}
+
+li a:hover{
+  color:#FF8600 ;
+}
+
+
+/*轮播图的bander样式*/
+.banner{
+    background: url(../imgs/banner.jpg) repeat center;
+    height: 400px;
+}
+
+.middle-text{
+
+    float: left;
+    padding-top: 100px;
+    width: 1000px;
+
+    text-align: center;
+    padding-left: 100px;
+
+
+}
+
+.middle-text h3{
+    color: #fff;
+    text-align: center;
+    font-size: 32px;
+    line-height: 35px;
+}
+.middle-text  span{
+
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+     line-height: 35px;
+
+}
+
+.middle-text p{
+    display: inline-block;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    width: 650px;
+     line-height: 20px;
+
+}
+
+.arrow{
+            position: absolute;
+            top: 280px;
+            width: 60px;
+            height: 60px;
+            font-size: 36px;
+            font-weight: bold;
+            line-height: 59px;
+            text-align: center;
+            color: #fff;
+            background-color: RGBA(0,0,0, .3);
+        }
+
+ .arrow:hover{   <!--鼠标滑过时的颜色 -->
+    color: #ff8600;
+}
+
+#prev{
+    left: 30px;
+}
+#next{
+    right: 30px;
+}
+
+
+
+/*新闻动态*/
+.news{
+    margin-top: 25px;
+    width: 1200px;
+     margin: 0 auto;
+    background: #fff;
+
+}
+
+
+.news-title{
+
+    padding-top: 20px;
+    border-bottom: #eea236 1px solid;
+    padding-bottom: 10px;
+}
+
+
+.news-left{
+    width: 600px;
+    border: 1px #f012be solid;
+    float: left
+}
+
+.news-title-left{
+    display: inline;
+    float: left;
+}
+
+.news-title h3{
+    color: #666;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.news-title h3 span{
+    font-size: 16px;
+    color: #999;
+    font-weight: normal;
+}
+
+
+
+
+.news-title-right{
+    display: inline;
+    float: right;
+}
+
+.news-title h4{
+    font-weight: normal;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.news-title h4 a{
+    font-size: 10px;
+    color: #666;
+    text-decoration: none;
+
+    -webkit-transition: color 200ms;  /*字体颜色切换的过渡*/
+    -o-transition: color 200ms;
+    transition: color 200ms;
+}
+.news-title h4 a:hover{
+        color:#FF8600;
+}
+
+/*新闻列表*/
+.news-lists{
+    border: #125acd 1px solid;
+    padding-left: 15px;
+    margin-top: 10px;
+}
+.news-item{
+     border: #FF8600 1px solid;
+    margin-bottom: 15px;
+
+}
+.data-left{
+    width:63px ;
+    height: 66px;
+    background: #999;
+    float: left;
+}
+
+.data-left h3{
+    font-size: 25px;
+    color: #fff;
+    width: 63px;
+    text-align: center;
+    padding-top: 6px;
+}
+.data-left h4{
+    font-size: 12px;
+    border-top: #E6E6E6 1px dashed;
+    width: 63px;
+    text-align: center;
+    color: #fff;
+    padding-top: 6px;
+}
+
+
+
+.news-text-right{
+    display: inline;
+    float: right;
+    width: 500px;
+    line-height: 1.1;
+}
+.news-text-right h3 a{
+    text-decoration: none;
+    font-size: 14px;
+    color: #333;
+
+    font-weight: normal;
+}
+
+.news-text-right h3 span{
+
+
+    font-size: 12px;
+    color: #ccc;
+    margin-left: 145px;
+
+}
+.news-text-right p a{
+     text-decoration: none;
+    font-weight: normal;
+    font-size: 12px;
+    color: #999;
+}
+.news-text-right p a:hover,
+.news-text-right h3 a:hover
+{
+   color:#FF8600;
+    -webkit-transition: color 200ms;  /*字体颜色切换的过渡*/
+    -o-transition: color 200ms;
+    transition: color 200ms;
+}
+
+
+/*新闻列表的右侧-宣传图片*/
+.news-right{
+    display: inline;
+    float: right;
+    width: 550px;
+    border: 1px #f012be solid;
+}
+
+.news-video{
+    background: #000000;
+    width: 300px;
+    height: 10px;
+    margin-top: 15px;
+
+
+}
+.gray{
+    padding: 16px 30px 5px 30px;
+    background: #ECECEC;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+}
+.video{
+    width: 400px;
+    height: 210px;
+    background: url(../imgs/honor01.jpg) no-repeat center;
+    box-sizing: border-box;
+    margin-top: 7px;
+}
+.play{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: url(../imgs/honor03.png) repeat;
+    text-align: center;
+}
+.play img{
+    padding: 20px 21px 19px 28px;
+}
+
+
+/*案例*/
+.case{
+    width: 1200px;
+    margin: 0 auto;
+    border:  1px #f012be solid;
+    margin-top: 10px;
+    background: #fff;
+}
+
+/*案例标题*/
+.case-title{
+    border: solid 2px #f012be;
+    text-align: center;
+    line-height: 1.2;
+    margin: 10px 0px;
+    background: #fff;
+}
+.case-title h3{
+    color: #666;
+    font-size: 28px;
+    font-weight: normal;
+}
+
+.case-title h3 span{
+
+    font-size: 20px;
+    color: #999;
+    margin-left: 3px;
+}
+.case-title h4{
+    font-size: 16px;
+    color: #999;
+    font-weight: normal;
+
+}
+
+.case-title h4 span a{
+    text-decoration: none;
+}
+.case-title h4 span a:hover{
+    text-decoration: none;
+    color: #ff8600;
+
+}
+/*下面图片的效果*/
+.casecont{
+    margin: 20px;
+    border: #ff8600 1px solid;
+}
+
+/*左半部分*/
+.caseleft-fl{
+    float: left;
+
+}
+
+
+
+.casetop-fl{
+    float: left;
+    margin-right: 20px;
+     background: #F9F9F9;
+
+}
+
+
+.casetop-fl>img{
+    width: 370px;
+    height: 261px;
+}
+
+/*图片下的文字*/
+.introduce{
+    padding: 15px 20px;
+    width: 370px;
+    box-sizing: border-box;
+    background: #F9F9F9;
+}
+
+.introduce h3{
+    font-weight: normal;
+    font-size: 18px;
+}
+.introduce a {
+    text-decoration: none;
+    color: #333;
+
+}
+.introduce a:hover{
+    color: #ff8600;
+    -webkit-transition: color 200ms;  /*字体颜色切换的过渡*/
+    -o-transition: color 200ms;
+    transition: color 200ms;
+
+}
+
+.introduce h3 span{
+    font-size: 14px;
+    color: #333;
+    margin-left: 10px;
+}
+
+.introduce p{
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.introduce p a{
+    color: #666;
+}
+
+/*按钮*/
+.introduce button{
+    width: 68px;
+    height: 20px;
+    background: #000;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 5px;
+    color: #fff;
+    line-height: 20px;
+}
+
+
+
+
+/*案例图片的右侧*/
+.casetop-fr{
+    float: right;
+    background: #F9F9F9;
+
+
+}
+
+/*案例图片的下半部分*/
+.casebottom{
+    margin-top: 10px;
+}
+
+
+.casebottom .casetop-fr,
+.casebottom .casetop-fl{
+    position: relative;
+}
+
+
+.casebottom .effect{
+    position: absolute;
+    width: 370px;
+    height: 261px;
+    padding-top: 70px;
+    padding-left: 30px;
+    box-sizing: border-box;
+    background: url(../imgs/honor03.png) repeat;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 1s;
+     -webkit-transition: opacity 1s;
+
+}
+
+.casebottom .effect:hover{
+    opacity: 1;
+}
+
+
+
+.casebottom .effect h3 a,
+.casebottom .effect h3 span,
+.casebottom .effect p a{
+    color: #ffffff;
+}
+
+.casebottom .effect h3 a:hover,
+.casebottom .effect p a:hover{
+    color: #ff8600;
+    -webkit-transition: color 200ms;  /*字体颜色切换的过渡*/
+    -o-transition: color 200ms;
+    transition: color 200ms;
+
+}
+
+.effect button{
+    width: 68px;
+    height: 20px;
+    background: #000;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 5px;
+    color: #fff;
+    line-height: 20px;
+}
+
+/*右半部分*/
+.caseright-fr{
+    float: right;
+}
+
+.caseright-img{
+    background: #F9F9F9;
+}
+.caseright-fr .introduce{
+width: 332px;
+
+}
+
+
+/*工装案例部分*/
+.teams,
+.tool{
+    width: 1200px;
+    margin: 0 auto;
+    border:  1px #f012be solid;
+    margin-top: 10px;
+    background: #fff;
+}
+
+/*工装案例横排列表*/
+.teamscont,
+.toolcont{
+    margin: 20px 30px;
+}
+.toolcase{
+    float: left;
+    background: #F4F4F4;
+    width: 210px;
+    margin-left: 15px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.toolcase img{
+    width:210px;
+    height: 155px;
+}
+.toolcase h3{
+    font-size:14px;
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+.toolcase h3 a{
+    text-decoration: none;
+    color: #333;
+}
+
+
+.toolcase h3 span{
+    font-size: 12px;
+    color: #666;
+}
+
+/*鼠标移动上去的图片变化*/
+.toolcase .effect{
+    background: url(../img/toolcase01.png) no-repeat top;
+    width:210px;
+    height: 231px;
+    border: #ff8600 4px solid;
+    border-radius: 3px;
+    position: absolute;
+    top: -10px;
+    left: -4px;
+    display: none;
+}
+
+.effect-block{
+    width: 210px;
+    height: 76px;
+    background: #333;
+    padding-top: 6px;
+    padding-left: 14px;
+    box-sizing: border-box;
+    margin-top: 155px;
+}
+.effect-block h3{
+    line-height: 25px;
+}
+.effect-block h3 a{
+    color: #fff;
+    text-decoration: none;
+}
+.effect-block h3 span{
+    font-size: 12px;
+    color: #ffffff;
+    font-weight: normal;
+}
+
+/*将其变成block，显示*/
+.toolcase:hover .effect{
+    display: block;
+}
+
+
+/*设计师的案例*/
+.teamsbottom{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/*左侧部分的浮动*/
+.teamscont-left{
+    float: left;
+    margin-bottom: 10px;
+
+}
+
+.teamstop-left{
+    float: left;
+    background: #ececec;
+    margin-right: 9px;
+    padding-right: 55px;
+    box-sizing: border-box;
+}
+
+.teamstop-right .introduce,
+.teamstop-left .introduce{
+    float: right;
+    width: 207px;
+    background: #ececec;
+}
+
+.teamstop-right{
+    float: right;
+    background: #ececec;
+    margin-right: 10px;
+    padding-right: 32px;
+}
+
+/*设计师案例的底部*/
+.teamsbot-left{
+    float: left;
+    background: #ececec;
+    padding-left: 17px;
+}
+.teamimg,
+.teamimg img{
+    float: right;
+}
+
+.teamsbot-left .introduce{
+    float: left;
+    background: #ececec;
+    width: 235px;
+
+}
+
+.teamsbot-right{
+    float: right;
+    background: #ececec;
+    width: 355px;
+    height: 177px;
+    margin-left: 10px;
+    padding-left: 17px;
+    box-sizing: border-box;
+
+}
+
+.teamsbot-right .introduce{
+    background: #ececec;
+    width: 235px;
+
+}
+
+/*右侧比较大的人像*/
+.teamscont-right{
+    float: right;
+    position: relative;
+    height: 365px;
+    width: 200px;
+}
+
+.teamscont-right .teamimg{
+    position: absolute;
+    left: -32px;
+}

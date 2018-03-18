@@ -1,0 +1,171 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0; border:0; list-style:none;}
+body{background:#ECECEC; font-family:"微软雅黑"; font-size:14px; color:#333;}
+.fl{float:left;}
+.fr{float:right;}
+.clear{clear:both;}
+/*header begin*/
+header{width:100%; background:#fff;}
+	header .top{ width:100%; background:#000; border-bottom:#ccc 2px solid;}
+    	.box{width:1200px; margin:auto; line-height:30px; text-align:right; color:#fff; font-size:12px;}
+		.box a{ color:#fff; padding-left:20px; margin-right:15px;}
+		.box a:hover{color:#FF8600;}
+		.bg1{background:url(../img/index01.png) no-repeat left center;}
+		.bg2{background:url(../img/index02.png) no-repeat left center;}
+		.bg3{background:url(../img/index03.png) no-repeat left center;}
+		.box span{color:#575757; margin-right:12px;}
+    .navbar{width:1200px; margin:auto; padding:18px 0; position:relative;}
+    	.logo{}
+        nav{padding-top:20px;}
+			nav ul{}
+			nav ul li{float:left;}
+			nav ul li a{font-size:16px; background:url(../img/index04.jpg) no-repeat right center; padding-right:12px; margin-right:25px;}
+			nav ul li:first-child a{background:none;}
+			.active{color:#ff8500 !important;}
+		.sbox{width:13px; height:13px; background:#fff; transform:rotate(45deg); -moz-transform:rotate(45deg); -ms-transform:rotate(45deg); -o-transform:rotate(45deg); -webkit-transform:rotate(45deg); position:absolute; bottom:-7px; left:100px;}
+    .banner{width:100%; height:400px; background:url(../img/banner1.png) no-repeat center;}
+/*header end*/
+/*content begin*/
+.content{width:1200px; margin:auto;margin-top:15px;}
+	/*news and honor begin*/
+	.cont{ margin-bottom:18px; background:#fff; padding:40px;}
+	.cont1{padding:35px 40px 35px 25px;}
+    	.news{width:571px;}
+        	.cont h3{border-bottom:#ccc 1px solid; font-size:20px; color:#666; padding-bottom:10px;}
+			.cont h3 span{font-size:16px; color:#999;}
+			.cont h3 a{font-size:12px; color:#666; display:block; padding-top:10px;}
+			.cont h3 a:hover{color:#ff8600;}
+            .newslist{padding-left:15px; padding-right:10px; padding-top:3px;}
+            	.newslist li{ margin-top:20px;}
+				.date{width:63px; height:66px; background:#999; color:#fff; text-align:center;}
+				.date h2{font-size:25px; border-bottom:#dfdfdf 1px dotted; margin-bottom:7px;}
+				.newscont{width:466px;}
+				.newscont h4{font-size:14px; color:#333;}
+				.newscont h4 span{font-size:12px; color:#ccc;}
+				.newscont h4 a{}
+				.newscont p{font-size:12px; margin-top:10px; line-height:20px;}   
+				.newscont p a{color:#999;}
+        
+
+14:37:33
+【欣沫儿】 2016/10/9 14:37:33
+把代码发给我一下
+
+【欣沫儿】 2016/10/9 14:37:39
+从video开始
+
+【欣沫儿】 2016/10/9 14:38:15
+
+
+【欣沫儿】 2016/10/9 14:38:28
+就是从企业荣誉那块往下的
+
+【欣沫儿】 2016/10/9 14:38:38
+我都没写
+
+郎丰阳 2016/10/9 14:39:07
+
+14:39:39
+【欣沫儿】 2016/10/9 14:39:39
+你复制粘贴一下代码啊
+
+【欣沫儿】 2016/10/9 14:39:42
+哈哈
+
+【欣沫儿】 2016/10/9 14:39:56
+我直接粘上
+
+郎丰阳 2016/10/9 14:40:02
+<div class="honor fr">
+        	<h3><a class="fr" href="#"> MORE></a>企业荣誉<span> | COMPANY HONOR</span></h3>
+            <div class="video">
+            	<img src="imgideo.png"/>
+                <h4>德瑞意家装饰公司2015企业最新宣传片</h4>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="cont">
+    	<div class="title">
+        	<h2>家装案例<span>   HOME IMPROVENMENT CASE</span></h2>
+            <p>资深设计团队全力打造1000余套精品设计方案，当下流行设计风格抢先查看、预约定制。<a href="#">READ MORE></a></p>
+        </div>
+        <div class="homecase">
+        	<div class="caseleft fl">
+            	<div class="casetop"></div>
+                <div class="casebottom"></div>
+            </div>
+            <div class="caseright fr">
+            	<img src="imgase3.png"/>
+                <div class="casecont">
+                	<h4>米罗湾<span>现代简约  三室两厅  90㎡</span></h4>
+                    <p>本设计案例采用田园和简欧的设计风格，搭配绿色植被，让整个家居显得格外的自然···</p>
+                    <a href="#">获取方案</a>
+                </div>
+            </div>
+            <div class="clear"></div>
+
+【欣沫儿】 2016/10/9 14:40:08
+good
+
+【欣沫儿】 2016/10/9 14:40:14
+还有css
+14:42:04
+郎丰阳 2016/10/9 14:42:04
+.honor{ width:482px;}
+        	.honor h3{border-bottom:#ccc 1px solid; font-size:20px; color:#666; font-weight:normal; padding-bottom:10px;}
+            .video{ margin:20px 15px 0 15px; width:453px; background:#ececec; padding-top:17px; padding-left:29px; box-sizing:border-box; -moz-box-sizing:border-box; -ms-box-sizing:border-box; -o-box-sizing:border-box; -webkit-box-sizing:border-box;}
+            	.video img{}
+                .video h4{ font-size:14px; color:#666; text-align:center; font-weight:normal; line-height:32px;}
+            
+    
+    .cont{}
+    	.title{ text-align:center;}
+        	.title h2{ font-weight:normal; font-size:28px; color:#666;}
+			.title h2 span{ font-size:20px; color:#999; margin-left:10px; }
+            .title p{ font-size:16px; line-height:24px; color:#999; margin-top:5px;}
+			.title p a{font-size:12px;}
+        
+        .homecase{ margin-top:38px;}
+        	.caseleft{ width:784px;}
+            	.casetop{}
+                .casebottom{}
+            .caseright{ width:332px;}
+				.casecont{ background:#f9f9f9; padding:20px 30px;}
+				.casecont h4{ font-size:18px; color:#000; font-weight:normal;}
+				.casecont h4 span{font-size:14px; color:#333; margin-left:15px;}
+				.casecont p{ font-size:12px; color:#666; line-height:20px;}
+				.casecont a{ font-size:12px; background:#000; width:68px; height:18px; line-height:18px; text-align:center; color:#fff; display:block; margin-top:15px;}
+    			.casecont a:hover{color:#ff8600;}
+	/*home case end*/
+    /*tooling case begin*/
+        .tooling{}
+        	.tooling li{} 
+	/*tooling case end*/
+	/*designer begin*/   
+        .designer{}
+        	.designer_l{}
+            	.designer_t{}
+                .designer_b{}
+            .designer_r{}
+	/*designer end*/
+/*content end*/
+footer{width:100%;}
+	.top{}
+    	.slogo{}
+        .return{}
+    .bottom{}
+    	.activity{}
+        	.activity p{}
+            .actlist{}
+            	.actlist_l{}
+                .actlist_r{}
+        .contact{}
+        	.contact_l{}
+            	.address{}
+                .nav{}
+            .contact_r{}
+            	.contact_r p{}
+                .code{}
+        .copyright{}
