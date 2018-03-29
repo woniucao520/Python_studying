@@ -1,0 +1,583 @@
+body{
+    background: #F9F9F9;
+}
+
+
+/*头部导航部分 ：宽度：100%，高度：75px，背景颜色：#000*/
+.top-header{
+    width: 100%;
+    height: 75px;
+    background: #000;
+}
+/*top-box居中，宽1070px*/
+.top-box{
+    width: 1070px;
+    margin: 0 auto;
+}
+
+/*右侧导航栏，li左浮动，宽120，高75*/
+.top-box ul li{
+    float: left;
+    width: 120px;
+    height: 75px;
+    text-align: center;
+}
+
+/*导航栏里的字体*/
+.top-box ul li a{
+    color: #fff;
+    font-family: "微软雅黑", "宋体";
+    font-size: 16px;
+    line-height: 75px;
+    font-weight: bold;
+}
+
+/*单个“首页”的默认样式*/
+.top-box ul .active{
+    background: #494848;
+}
+
+/*鼠标经过后的li的背景变化样式*/
+.top-box ul li:hover{
+    background: #494848;
+}
+
+
+/*重点轮播图部分*/
+.container{
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.container .pic{
+    width: 5396px;
+    position: absolute;
+    left: 0px;
+}
+.pic li{
+    float: left;
+}
+
+.pic li img{
+    /*width: 1349px;*/
+    height: 600px;
+}
+
+/*图片里点击的原点*/
+.container .buttons{
+    position: absolute;
+    z-index: 2;
+    bottom: 30px;
+    left: 635px;
+    height: 10px;
+    width: 150px;
+}
+
+.buttons span{
+    float: left;
+    margin-right: 10px;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background: #333;
+    cursor: pointer;
+}
+
+.buttons .on{
+     background: #f60;
+
+}
+
+
+
+
+/*中间主要内容部分*/
+.content{
+    margin-top: 80px;
+}
+
+
+/*正文部分居中显示的盒子*/
+.content .content-box{
+    width: 1070px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/*第一部分：案例部分*/
+/*顶部图标部分和文字*/
+.service .top,
+.case .top{
+    width: 310px;
+    margin: 0 auto;
+}
+.service .top p,
+.case .top p{
+    font-size: 16px;
+    color: #b2b1b1;
+    border-bottom: 1px #d6d6d6 solid;
+    margin: 20px;
+    padding-bottom: 30px;
+}
+
+/*中间部分：所有图片设置左浮动*/
+.case .middle .middle-items{
+    float: left;
+}
+/*除去第一个，其他的设置左外间距*/
+.case .middle :not(:first-child){
+    margin-left: 20px;
+}
+/*图片下面的文字p，注意居中对齐*/
+.case .middle .middle-items p{
+    margin: 0;
+    text-align: center;
+    font-size: 14px;
+    color: #787777;
+    padding-top: 10px;
+}
+
+/*鼠标经过，图片背景变换，实质是替换背景图片*/
+.case .middle .middle-items img:hover{
+
+    background:  url(../imgs/keting1.png) no-repeat -6px center;
+}
+
+
+/*底部 图片排列*/
+.case .bottom{
+    margin-top: 20px;
+}
+
+.case .bottom .bottom-up{
+    margin-bottom: 35px;
+}
+/*左边部分图片*/
+.bottom-up .style3 .style3-up,
+.bottom-up .style1 .style1-up{
+    margin-bottom: 13px;
+}
+/*设置相对定位*/
+.bottom-up .style2,
+.bottom-up .style3 .style3-down,
+.bottom-up .style3 .style3-up,
+.bottom-up .style1 .style1-down,
+.bottom-up .style1 .style1-up{
+    position: relative;/*为背景底色的位置做准备*/
+}
+
+
+.bottom-up .style1 .style1-down .block,
+.bottom-up .style1 .style1-up .block{
+    width: 324px;
+    height:32px ;
+    background:url(../imgs/black.png) repeat ;
+    position: absolute;
+    top: 153px;
+    display: none;
+}
+
+.bottom-up .style2 .block{
+   width: 412px;
+    height:50px ;
+    background:url(../imgs/black.png) repeat ;
+    position: absolute;
+    top: 337px;
+    display: none;
+}
+
+
+.bottom-up .style3 .style3-down .block p,
+.bottom-up .style3 .style3-up .block p,
+.bottom-up .style1 .style1-down .block p,
+.bottom-up .style1 .style1-up .block p{
+    line-height: 32px;
+    color: #fff;
+    font-size: 15px;
+}
+
+.bottom-up .style2 .block p{
+    line-height: 50px;
+    color: #fff;
+    font-size: 15px;
+
+}
+/*当鼠标经过图片时*/
+.bottom-up .style2:hover .block,
+.bottom-up .style3 .style3-down:hover .block,
+.bottom-up .style3 .style3-up:hover  .block,
+.bottom-up .style1 .style1-down:hover .block,
+.bottom-up .style1 .style1-up:hover  .block{
+    display: block;
+}
+
+
+/*右侧部分图片*/
+.bottom-up .style2,
+.bottom-up .style3 {
+ margin-left: 25px;
+}
+
+
+
+
+
+.bottom-up .style3 .style3-down .block,
+.bottom-up .style3 .style3-up .block{
+    width: 280px;
+    height:32px ;
+    background:url(../imgs/black.png) repeat ;
+    position: absolute;
+    top: 153px;
+    display: none;
+}
+
+
+
+/*第二部分：家居定制customized*/
+/*外面总的盒子：设置外边距*/
+.customized{
+    margin-top: 20px;
+}
+/*顶部的loge图片，文字还有下边框*/
+.customized .top{
+    width: 310px;
+    margin: 0 auto;
+}
+.customized .top p{
+    font-size: 16px;
+    color: #b2b1b1;
+    border-bottom: 1px #d6d6d6 solid;
+    margin: 20px;
+    padding-bottom: 30px;
+}
+/*家具部分*/
+.customized .middle{
+    margin-top: 20px;
+}
+
+/*右半部分的文字列表排列*/
+.omaments .omaments-text a,
+.furniture .furniture-text a{
+    display: inline-block;
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    color: #333;
+    border-right: 1px #333 solid;
+    margin-left: 10px;
+    text-align: center;
+    padding-right: 10px;
+}
+
+/*下面的图片展示：第一层*/
+.furniture-bottom{
+    margin-top: 20px;
+    position: relative;
+}
+
+.furniture-bottom .bottom-first .block{
+    position: absolute;
+    width: 1070px;
+    height: 110px;
+    top:240px;
+    left: 0;
+    background: url(../imgs/black.png) repeat;
+    display: none;
+
+}
+.furniture-bottom .bottom-first:hover  .block{
+    display: block;
+}
+.bottom-first .block p{
+    color: #ffffff;
+    font-size: 12px;
+}
+
+
+.bottom-first .block .introduce{
+    padding-top: 30px;
+
+}
+.bottom-first .block .introduce p{
+    color: #ffffff;
+    font-size: 16px;
+    width: 300px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.bottom-first .block .want-more{
+    padding-top: 45px;
+    margin-right: 30px;
+}
+
+
+.bottom-first .block .want-more p{
+    color: #ffffff;
+    font-size: 14px;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    border: #ffffff 1px solid;
+
+}
+/*查看更多鼠标移动经过效果*/
+.bottom-first .block .want-more p:hover{
+     color: #f60;
+    border: solid 1px #f60;
+
+}
+
+/*第二层：3张图片排列*/
+.bottom-second{
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+
+.bottom-second .img-two,
+.bottom-second .img-third{
+    margin-left: 16px;
+}
+
+.bottom-second .img-two,
+.bottom-second .img-third,
+.bottom-second .img-one{
+    text-align: center;
+    position: relative;
+}
+
+
+
+
+.bottom-second .img-two .block,
+.bottom-second .img-third .block,
+.bottom-second .img-one .block{
+
+    width: 346px;
+    height: 218px;
+    background: url(../imgs/black.png) repeat;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    display: none;
+}
+
+
+
+.omaments-img-first .block p,
+.omaments-img-first .block p,
+.omaments-img-second .block p,
+.omaments-img-right .block p,
+.bottom-second .img-two .block p,
+.bottom-second .img-third .block p,
+.bottom-second .img-one .block p{
+
+    font-size: 15px;
+    color: #ffffff;
+    line-height: 30px;
+
+
+}
+
+
+
+
+.omaments-img-first .block p:first-child,
+.omaments-img-first .block p:first-child,
+.omaments-img-second .block p:first-child,
+.omaments-img-right .block p:first-child,
+.bottom-second .img-two .block p:first-child,
+.bottom-second .img-third .block p:first-child,
+.bottom-second .img-one .block p:first-child{
+
+  padding-top: 50px;
+
+}
+
+.omaments-img-first .block p:last-child,
+.omaments-img-first .block p:last-child,
+.omaments-img-second .block p:last-child,
+.omaments-img-right .block p:last-child,
+.bottom-second .img-two .block p:last-child,
+.bottom-second .img-third .block p:last-child,
+.bottom-second .img-one .block p:last-child{
+    width: 80px;
+    margin: 0 auto;
+    height: 30px;
+    border: 1px #ffffff solid;
+    text-align: center;
+    margin-top: 10px;
+
+
+}
+
+.omaments-img-first .block p:last-child:hover,
+.omaments-img-first .block p:last-child:hover,
+.omaments-img-second .block p:last-child:hover,
+.omaments-img-right .block p:last-child:hover,
+.bottom-second .img-two .block p:last-child:hover,
+.bottom-second .img-third .block p:last-child:hover,
+.bottom-second .img-one .block p:last-child:hover{
+    color: #f60;
+    border: solid 1px #f60;
+
+}
+
+
+.omaments-img-first .block,
+.omaments-img-first .block,
+.omaments-img-second .block,
+.omaments-img-right .block{
+    display: none;
+}
+
+
+.omaments-img-first .img-two:hover .block,
+.omaments-img-first .img-one:hover .block,
+.omaments-img-second:hover .block,
+.omaments-img-right:hover .block,
+.bottom-second .img-two:hover .block,
+.bottom-second .img-third:hover .block,
+.bottom-second .img-one:hover .block{
+    display: block;
+}
+
+
+
+
+
+/*第四部分 服务*/
+.service{
+    margin-top: 30px;
+}
+
+
+/*图片设置上边据*/
+
+.service .bottom{
+    margin-top:30px ;
+}
+
+.service .bottom .text {
+    margin-top: 20px;
+    width: 230px;
+    height: 100px;
+    line-height: 20px;
+}
+.service .bottom .text h3{
+    font-size: 20px;
+    color: #333;
+}
+
+.service .bottom .text p{
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 20px;
+    color: #333;
+}
+
+.hours,
+.response{
+    margin-left: 50px;
+   }
+
+
+
+
+/*页脚部分，背景图*/
+.footer{
+    background: url(../imgs/foot.jpg) no-repeat 50% center;
+    padding-top: 275px;
+
+}
+/*foot-box 让元素居中显示*/
+.footer .weixin{
+    width: 520px;
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+.footer .weixin .wx2,
+.footer .weixin .wx3{
+    margin-left: 35px;
+}
+
+
+.footer .footer-box{
+
+    background: #4a4949;
+
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+
+}
+
+
+.weixin p,
+.footer-box .footer-text p{
+    line-height: 20px;
+    color: #ffffff;
+}
+
+
+/*第二层饰品：*/
+.omaments-bottom{
+    margin-top: 20px;
+}
+
+/*图片的block大小设置*/
+.omaments-img-right,
+.omaments-img-second,
+.omaments-img-first .img-two,
+.omaments-img-first .img-one{
+    position: relative;
+}
+
+.omaments-img-first .img-one .block{
+    width: 203px;
+    height: 204px;
+    background: url(../imgs/black.png) repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.omaments-img-first .img-two .block{
+    width: 365px;
+    height: 204px;
+    background: url(../imgs/black.png) repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.omaments-img-second{
+    margin-top: 15px;
+}
+.omaments-img-second .block{
+        width: 583px;
+        height: 247px;
+        background: url(../imgs/black.png) repeat;
+        position: absolute;
+        top: 0;
+        left: 0;
+}
+
+.omaments-img-right .block{
+        width: 467px;
+        height: 470px;
+        background: url(../imgs/black.png) repeat;
+        position: absolute;
+        top: 0;
+        left: 0;
+}

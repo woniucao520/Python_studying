@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+html,body{
+	margin:0;
+	padding:0;
+	font-size:14px;
+	font-family:'微软雅黑',Arial, Helvetica, sans-serif;
+	}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,form,fieldset,input,textarea,img{
+	margin:0;
+	padding:0;
+	list-style:none;
+	border:0;
+	}
+/*左右浮动*/
+.fl{
+	float: left;
+}
+
+.fr{
+	float: right;
+}
+
+/*清除浮动*/
+
+.clear-float:after,  /*伪类，清除浮动*/
+.clear-float:before{
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+
+a:link {
+ color: #333;
+ text-decoration: none
+}
+a:visited {
+	color: #333;
+ text-decoration: none
+}
+a:hover {
+ color: #f60;
+ text-decoration: none;
+}
+a:active {
+ color: #f60;  
+ text-decoration:none;
+}
+h1,h2,h3,h4,h5{
+	font-size:14px; font-weight:normal;
+	}
+h6{
+	font-size:12px; font-weight:normal;
+	}
+p{
+	font-size:13px;
+	}
+
+
+
