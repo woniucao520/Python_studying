@@ -33,14 +33,13 @@ body{
     float: left;
     width: 85px;
     text-align: center;
-    margin-right: 10px;
 }
 .nav .index{
     color: #fefeff;
     background: #5696ff;
 
 }
-.login span,
+.login a,
 .nav li a{
     color: #3c3d46;
     font-size: 18px;
@@ -53,7 +52,7 @@ body{
 }
 
 /*登录，注册部分*/
-.login span:first-child{
+.login a:first-child{
     height:14px ;
     padding-right: 10px;
     margin-right: 5px;
@@ -79,6 +78,7 @@ body{
     border-radius: 50px;
     border: 3px #fff solid;
     margin-right: 10px;
+    cursor: pointer;
 
 }
 .banner .button .on{
@@ -88,7 +88,7 @@ body{
 /*中间主要内容*/
 /*外围容器：设置间距*/
 .container{
-    margin: 60px 0 50px 0;
+    margin: 60px 0 70px 0;
 }
 .container-box .search{
     width: 350px;
@@ -104,11 +104,577 @@ body{
     margin-left: 10px;
 }
 
+/*地区旅游部分*/
+
+.translation{
+    margin: 65px 0 65px 0;
+    line-height: 50px;
+
+}
+
+.travel-share .top,
+.advisory .top,
+.special-trip .top,
+.translation .top {
+    width:400px;
+    text-align: center;
+    /*是元素水平居中的另一种方法*/
+    margin-left:auto;
+    margin-right:auto;
+    line-height: 40px;
+}
+/*左右线条*/
+
+.travel-share .title hr,
+.advisory .title hr,
+.special-trip .title hr,
+.translation .title hr{
+    display: inline-block;
+    width: 80px;
+    border-bottom: 2px #666666 solid;
+}
+
+/*线条里面的文字*/
+
+.travel-share .title .item,
+.advisory .title .item,
+.special-trip .title .item,
+.translation .title .item{
+    padding: 0 5px 0 5px;
+    font-size: 36px;
+    color: #5696ff;
+}
+
+.travel-share .top p,
+.advisory .top p,
+.special-trip .top p,
+.translation .top p{
+    font-size: 24px;
+    color: #666666;
+}
+
+.more{
+    margin-top: 50px;
+    width: 160px;
+    height: 54px;
+    border: 2px #5696ff solid;
+    border-radius: 10px;
+    text-align: center;
+    margin-left:auto;
+     margin-right:auto;
+
+}
+.more p{
+    font-size: 24px;
+    color: #5696ff;
+    line-height: 54px;
+
+}
+
+/*地区部分的图片展示*/
+.middle{
+    margin-top: 50px;
+}
+/*四川*/
+.middle .SiChuan{
+    background: url(../imgs/Sichuan.jpg) no-repeat -340px ;
+    width: 119px;
+    height: 372px;
+    border-right: 2px solid #ffffff;
+}
+
+.bg-text{
+    height: 372px;
+    background: #666666;
+    background-color:rgba(0,0,0,0.3);/*背景色透明，而文字不透明*/
+}
+
+.bg-text p{
+    color: #ffffff;
+    font-size: 28px;
+    margin-left: 35px;
+    padding-top: 65px;
+}
+
+/*设置背景色:opacity整个模块都透明了*/
+/*https://www.cnblogs.com/PeunZhang/p/4089894.html*/
+
+
+/*大理*/
+.middle .DaLi{
+    background: url(../imgs/DaliTravel.jpg) no-repeat -170px ;
+   width: 119px;
+    height: 372px;
+      border-right: 2px solid #ffffff;
+}
+/*丹麦*/
+.middle .Danish{
+    background: url(../imgs/Danish.jpg) no-repeat ;
+    width: 595px;
+    height: 372px;
+    border-right: 2px solid #ffffff;
+    position: relative;
+}
+
+/*丹麦下的播放按钮*/
+.play-video{
+    position: absolute;
+    top:-1px;
+    left: 125px;
+}
+
+/*日本*/
+.middle .Japan{
+    background:  url(../imgs/Japen.jpg) no-repeat -218px;
+   width: 119px;
+    height: 372px;
+      border-right: 2px solid #ffffff;
+}
+/*意大利*/
+.middle .Italy{
+    background:  url(../imgs/Italy.jpg) no-repeat -40px;
+    width: 119px;
+    height: 372px;
+      border-right: 2px solid #ffffff;
+}
+
+/*法国*/
+.middle .French{
+
+    background:  url(../imgs/france.jpg) no-repeat -148px;
+    width: 119px;
+    height: 372px;
+
+}
+
+
+/*第二部分： 特惠行程*/
+/*丹麦*/
+.special-trip .first-Danish{
+    background: url(../imgs/special-travel/Danish0506.jpg) no-repeat;
+    width: 440px;
+    height: 306px;
+    margin-right: 10px;
+}
+/*越南*/
+.special-trip .first-Vietnam{
+    background: url(../imgs/special-travel/Vietnam0506.jpg) no-repeat;
+
+    width: 440px;
+    height: 306px;
+
+}
+
+/*越南的阴影背景*/
+.Vietnam-text{
+    margin: 20px;
+    width: 390px;
+    height: 250px;
+    border: 3px solid #e8cfd2;
+    background: #666666;
+    background-color:rgba(0,0,0,0.3);/*背景色透明，而文字不透明*/
+    text-align: center;
+
+}
+.Vietnam-price hr{
+    display: inline-block;
+    width: 90px;
+    border-bottom: 2px #ffffff solid;
+}
+.Vietnam-price .item{
+    font-size: 26px;
+    color: #ffffff;
+    font-weight: bold;
+}
+.Vietnam-text p{
+    font-size: 22px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    padding-top: 25px;
+}
+
+
+/*曼谷*/
+.special-trip .second-Bangkok{
+    background: url(../imgs/special-travel/Bangkok0506.jpg) no-repeat;
+    width: 360px;
+    height: 366px;
+    margin: 10px 10px 0 0;
+
+}
+/*马来西亚*/
+.special-trip .second-Malaysia{
+    background: url(../imgs/special-travel/Malaysia0406.jpg) no-repeat;
+    width: 520px;
+    height: 366px;
+    margin-top: 10px;
+
+}
+/*日本*/
+.special-trip .middle-Japan{
+    background: url(../imgs/special-travel/Japan0506.jpg) no-repeat;
+    width: 300px;
+    height: 475px;
+    margin-bottom: 5px;
+}
+
+/*印度*/
+.special-trip .middle-India{
+    background: url(../imgs/special-travel/India0506.jpg) no-repeat;
+    width: 300px;
+    height: 202px;
+}
+
+/*背景图片里面的文字*/
+
+.special-text p{
+    font-size: 22px;
+    color: #ffffff;
+    padding: 50px 0 0 35px;
+}
+
+
+
+/*第三部分：旅游资讯*/
+.advisory{
+    margin-top: 65px;
+}
+
+/*墨西哥：上下覆盖交叉图片*/
+.advisory-Mexco{
+
+    margin-top: 20px;
+}
+/*由于绝对定位：导致这部分高度的塌陷：所以需要计算高度*/
+.advisory-Mexco .Mexco-img{
+    position: relative;
+    height: 1020px;
+
+}
+.advisory-Mexco .Mexco-left{
+    width: 1200px;
+    height:856px ;
+    overflow: hidden;
+    position: absolute;
+    top:130px;
+    left: 0px;
+}
+
+.advisory-Mexco .Mexco-right{
+    padding: 40px;
+    position: absolute;
+    top:0px;
+    right: 0px;
+    background: #f3f3f3;
+}
+/*墨西哥公民规定：左部分*/
+
+.New-Zealand-tags,
+.provisions-tags{
+    width:395px ;
+    margin-left: 35px;
+}
+
+.New-Zealand-tags hr,
+.provisions-tags hr{
+    width: 134px;
+    border-bottom: 4px solid #333333;
+    float: right;
+}
+
+.New-Zealand-tags p,
+.provisions-tags p{
+    color: #333333;
+    font-size: 30px;
+    text-align: right;
+    clear: both;
+    padding-top: 10px;
+    line-height: 45px;
+}
+/*公民右半部分*/
+.provisions-details .details-top{
+    width: 565px;
+}
+
+.provisions-details  .details-top p,
+.provisions-details .details-top h3,
+.provisions-details .details-top h4{
+    text-align: left;
+    font-size: 24px;
+    color: #333333;
+    line-height: 35px;
+}
+
+.provisions-details h3,
+.provisions-details h4{
+    text-indent: 2em;
+}
+
+/*完整文章*/
+.full-article{
+    margin-top: 30px;
+    width: 160px;
+    height: 54px;
+    border: 2px #999999 solid;
+    border-radius: 10px;
+    text-align: center;
+}
+.full-article p{
+    font-size: 24px;
+    color: #333333;
+    line-height: 54px;
+}
+
+/*新西兰风景图:*/
+.advisory-New-Zealand{
+    margin: 80px 0 80px 0;
+
+}
+
+.New-Zealand-img{
+    position: relative;
+}
+
+.New-Zealand-img .NZ-leaf{
+    width: 575px;
+    height: 780px;
+    overflow: hidden;
+}
+
+
+.New-Zealand-img .NZ-building{
+    position: absolute;
+    background: #f3f3f3;
+    padding: 50px;
+    top: 60px;
+    right: 0px;
+
+}
+
+/*新西兰右边文字*/
+.New-Zealand-tags{
+    margin-top: 20px;
+}
+
+/*新西兰右半部分文字*/
+.New-Zealand-details{
+    width: 563px;
+    position: absolute;
+    top: 535px;
+    right: 20px;
+
+}
+.New-Zealand-details p{
+    font-size: 24px;
+    color: #333333;
+    text-align: left;
+    line-height: 50px;
+
+}
+
+
+
+/*游记分享*/
+.travel-share{
+    margin-top: 80px;
+}
+
+/*游记中间部分*/
+.travel-share .middle{
+    margin: 30px 0 30px 0;
+}
+
+/*精选文章部分*/
+.selected-articles{
+    width: 732px;
+    height: 962px;
+    background: url(../imgs/shares/Dali.jpg) no-repeat -130px;
+    box-shadow: 2px 2px 2px 2px #999999;
+}
+
+.selected-articles .articles-details{
+    width:500px;
+    height: 922px;
+    background: #666666;
+    background-color:rgba(0,0,0,0.3);/*背景色透明，而文字不透明*/
+    padding-top: 40px;
+
+
+}
+
+
+.articles-details .texts{
+    margin-left: 20px ;
+}
+
+/*标题*/
+.articles-details h1{
+    color: #5696ff;
+    font-size: 24px;
+    margin:0  0 60px 10px;
+}
+
+
+.articles-details h2{
+     font-size: 24px;
+    color: #ffffff;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.articles-details .tags span{
+    margin-top: 10px;
+    display: inline-block;
+    font-size: 20px;
+    color: #ffffff;
+    height: 5px;
+
+    padding: 10px;
+    line-height: 5px;
+
+}
+/*除去最后一个元素：not:(last-child)*/
+.articles-details .tags span:not(:last-child){
+        border-right: 1px solid #ffffff;
+}
+
+.articles-details h3{
+    margin: 10px 0 30px 320px;
+    font-size: 20px;
+    color: #ffffff;
+}
+.articles-details p{
+    margin-left: 10px;
+    font-size: 16px;
+    width: 540px;
+    color: #ffffff;
+    line-height: 35px;
+    text-indent: 2em;
+
+}
+
+/*游记分享：右侧部分*/
+
+.article-lists .article-item:first-child{
+    margin-bottom: 42px;
+}
+.article-lists .article-item{
+    width: 442px;
+    box-shadow: 2px 2px 2px 2px #999999;
+    background: #ffffff;
+    position: relative;
+    padding-bottom: 20px;
+
+
+}
+.article-lists .article-item img{
+    width: 400px;
+    padding: 35px 20px 10px 20px;
+
+}
+
+/*图片背景上的标签：卡瓦格博，黄昏*/
+.item-img-tags{
+    position: absolute;
+    top:50px;
+    left: 30px;
+}
+.item-img-tags span{
+    display: inline-block;
+    background: #3c6cbc;
+    color: #ffffff;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+/*图片下半部分的文章简介*/
+.intro-text{
+    margin: 0px 20px 0px 20px ;
+    line-height: 25px;
+}
+/*时间*/
+.intro-text .intro-time{
+    font-size: 12px;
+    color: #333333;
+}
+/*标题*/
+.intro-text .intro-title{
+    font-size: 14px;
+    color: #333333;
+}
+/*文章内容*/
+.intro-text .intro-content{
+
+    font-size: 12px;
+    color: #666666;
+}
+/*查看更多-超链接*/
+.intro-text .intro-content a{
+    font-size: 12px;
+    color: #5696ff;
+}
+
+
+
+/*精选照片*/
+.Selected-photos{
+    margin-top: 50px;
+    width: 1200px;
+    background: #ffffff;
+    padding: 30px 0 20px 0;
+     box-shadow: 2px 2px 2px 2px #999999;
+}
+.Selected-photos>p{
+    color: #5696ff;
+    font-size: 24px;
+    margin-left: 20px;
+}
+
+
+/*图片展示列表*/
+/*.photos-lists  .photo-item{*/
+    /*margin: 20px;*/
+/*}*/
+
+.photo-detail {
+    width: 275px;
+    height: 330px;
+    margin: 30px 0 10px 20px;
+    overflow: hidden; /*为了不让图片溢出*/
+}
+
+/*调整图片在div里显示的内容*/
+/*.photo-detail img{*/
+    /*margin-left: -30px;*/
+/*}*/
+
+/*图片下的文字*/
+.photo-intro{
+
+    color: #666666;
+    line-height: 25px;
+    margin-left: 20px;
+}
+.photo-intro span{
+    font-size: 12px;
+    padding-right: 20px;
+}
+
+.photo-intro p{
+    font-size: 18px;
+}
+
+/*最后一个More>*/
+.last{
+    margin-top: 100px;
+}
+
 
 
 /*页脚部分*/
 .footer{
     background: #5696ff;
+
 }
 
 .footer p{
