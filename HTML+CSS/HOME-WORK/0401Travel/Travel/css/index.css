@@ -61,7 +61,7 @@ body{
 
 /*如何让图片在不同的屏幕下，全屏等比例显示*/
 .banner{
-    background: url(../imgs/banner.jpg) no-repeat 100% 100%;
+    background: url(../imgs/banner.jpg) no-repeat center center;
     height: 600px;
     position: relative;
 }
@@ -72,6 +72,7 @@ body{
     bottom: 30px;
     left: 50%;
 }
+
 .banner .button span{
     display: inline-block;
     width: 18px;
@@ -163,13 +164,17 @@ body{
     text-align: center;
     margin-left:auto;
      margin-right:auto;
+      color: #5696ff;
 
 }
 .more p{
     font-size: 24px;
-    color: #5696ff;
     line-height: 54px;
+}
 
+.more:hover{
+    background:#5696ff ;
+    color: #ffffff;
 }
 
 /*地区部分的图片展示*/
@@ -256,6 +261,7 @@ body{
     width: 440px;
     height: 306px;
     margin-right: 10px;
+      padding-top: 20px;
 }
 /*越南*/
 .special-trip .first-Vietnam{
@@ -263,35 +269,60 @@ body{
 
     width: 440px;
     height: 306px;
+      padding-top: 20px;
 
 }
 
 /*越南的阴影背景*/
-.Vietnam-text{
-    margin: 20px;
-    width: 390px;
-    height: 250px;
+.block-text{
+    margin: 0 20px 20px 20px;
+
+    height: 85%;
     border: 3px solid #e8cfd2;
     background: #666666;
     background-color:rgba(0,0,0,0.3);/*背景色透明，而文字不透明*/
     text-align: center;
+    display: none;
 
 }
+
+.block-text p{
+    font-size: 22px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    padding-top: 25px;
+}
+
+/*鼠标滑过：背景显示*/
+.middle-India:hover .block-text,
+.middle-Japan:hover .block-text,
+.second-Malaysia:hover .block-text,
+.second-Bangkok:hover .block-text,
+.first-Danish:hover .block-text,
+.special-trip .first-Vietnam:hover .block-text{
+    display: block;
+}
+
+.middle-India:hover .special-text,
+.middle-Japan:hover .special-text,
+.second-Malaysia:hover .special-text,
+.second-Bangkok:hover .special-text,
+.first-Danish:hover .special-text,
+.special-trip .first-Vietnam:hover .special-text{
+    display: none;
+}
+
+
+
 .Vietnam-price hr{
     display: inline-block;
-    width: 90px;
+    width: 20%;
     border-bottom: 2px #ffffff solid;
 }
 .Vietnam-price .item{
     font-size: 26px;
     color: #ffffff;
     font-weight: bold;
-}
-.Vietnam-text p{
-    font-size: 22px;
-    color: #ffffff;
-    margin-bottom: 10px;
-    padding-top: 25px;
 }
 
 
@@ -301,6 +332,7 @@ body{
     width: 360px;
     height: 366px;
     margin: 10px 10px 0 0;
+    padding-top: 20px;
 
 }
 /*马来西亚*/
@@ -309,6 +341,7 @@ body{
     width: 520px;
     height: 366px;
     margin-top: 10px;
+      padding-top: 20px;
 
 }
 /*日本*/
@@ -317,6 +350,7 @@ body{
     width: 300px;
     height: 475px;
     margin-bottom: 5px;
+      padding-top: 20px;
 }
 
 /*印度*/
@@ -324,6 +358,7 @@ body{
     background: url(../imgs/special-travel/India0506.jpg) no-repeat;
     width: 300px;
     height: 202px;
+      padding-top: 20px;
 }
 
 /*背景图片里面的文字*/
@@ -331,7 +366,7 @@ body{
 .special-text p{
     font-size: 22px;
     color: #ffffff;
-    padding: 50px 0 0 35px;
+    padding: 30px 0 0 35px;
 }
 
 
