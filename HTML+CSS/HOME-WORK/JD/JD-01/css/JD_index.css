@@ -1,0 +1,101 @@
+/*测试可视化*/
+#top_main,#nav,#banner,#main,#foot_box,#footer{
+    border: 1px solid #333;
+}
+
+/*通用属性*/
+/*文字大小，颜色，字体*/
+body{
+    font:12px "microsoft yahei",Arial,Helvetica,sans-serif;
+    color:#666;
+    margin:0;
+    padding:0;
+}
+/*超链接 a的样式*/
+a{
+    color:#666;
+    text-decoration:none;
+}
+/*鼠标移动经过样式*/
+a:hover{
+    color:#ff0700;
+    text-decoration:underline;
+}
+h1,h2,h3,h4,h5,h6,p,ul,ol,dl,dd{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+
+/*左右浮动*/
+.fl{
+    float:left;
+}
+.fr{
+    float:right;
+}
+
+/*伪类清除浮动*/
+.clear_float:after,
+.clear_float:before{
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+/*开始布局*/
+/*元素水平居中，w：1211px*/
+.top_box,#top_main,#nav,#banner,#main,#foot_box,#footer{
+    width: 1211px;
+    margin: 0 auto;
+}
+
+/*顶部布局：w:100%，h：30px,bg-color:#F7F7F7*/
+#top{
+    width: 100%;
+    height: 30px;
+    background: #f7f7f7;
+    line-height: 30px; /*为了让文字水平垂直居中*/
+}
+
+/*图片位置的调整*/
+.top_box>img{
+    margin: 9px 5px 0 0 ;
+}
+
+/*右半部分，文字列表*/
+.top_lists > li{
+    float: left;
+    margin-right: 15px;
+}
+
+
+/*右半部分的分割线*/
+.top_box ul li b{
+    border-left: 1px solid #ddd;
+    margin-right: 15px;
+}
+
+/*会员俱乐部左侧图标*/
+.jd_app a{
+    background: url(../imgs/iconlist_2.png) no-repeat -128px -360px;
+    padding-left: 16px;
+}
+
+/*弹出菜单效果*/
+/*客户服务*/
+.service{
+    position: relative;
+}
+/*弹出服务列表*/
+.service .service_lists {
+    text-align: center;
+    width: 80px;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-top: none;/*无上边框*/
+    box-sizing: border-box;
+    position: absolute;
+    top:28px;
+    left: 5px;
+}
