@@ -66,26 +66,74 @@ h1,h2,h3,h4,h5,h6,p,ul,ol,dl,dd{
 /*右半部分，文字列表*/
 .top_lists > li{
     float: left;
-    margin-right: 15px;
+    margin-right: 5px;
 }
 
 
 /*右半部分的分割线*/
 .top_box ul li b{
     border-left: 1px solid #ddd;
-    margin-right: 15px;
+    margin-right: 5px;
+    line-height: 30px;
 }
 
 /*会员俱乐部左侧图标*/
+.vipclub a{
+    background: url(../imgs/vip.jpg) no-repeat no-repeat left center;
+    padding-left: 29px;
+
+}
+/*企业频道*/
+.channel a{
+    padding-left: 26px;
+    background: url(../imgs/dakehu.jpg) no-repeat left center;
+}
+
+/*难点：手机京东*/
 .jd_app a{
+    display: inline-block;
+    height: 22px;/*logo有高度，需要设置高度*/
+    padding-left: 18px;
+    line-height: 22px;/*文字垂直居中*/
     background: url(../imgs/iconlist_2.png) no-repeat -128px -360px;
-    padding-left: 16px;
+}
+
+/*手机京东：鼠标移动效果:背景改变*/
+
+.jd_app a:hover{
+     background: url(../imgs/iconlist_2.png) no-repeat -128px -399px;
+    /*背景图像位置的定位*/
 }
 
 /*弹出菜单效果*/
 /*客户服务*/
 .service{
     position: relative;
+}
+li.service>a{
+    /*左右内边距假装宽度*/
+    /*高度，行高*/
+    /*边框：左右上（透明），防止显示时串位置*/
+    /*背景*/
+    padding: 0 15px;/*上下0，左右15px*/
+    display: inline-block;
+    height: 27px;
+    line-height: 27px;
+    border: 1px solid transparent;
+    border-bottom: none;
+    /*背景*/
+    background: url(../imgs/jt_down.jpg) no-repeat 95% center;
+}
+
+/*服务：鼠标移入，显示边框*/
+/*之前移动到a上，现在修改移动到service上*/
+li.service>a:hover{
+    /*显示边框颜色，背景为白，更换背景图*/
+
+    /*border-color: #dddddd;*/
+
+     /*background: url(../imgs/jt_up.jpg) no-repeat 95% center;*/
+     /*background-color: #ffffff;*/
 }
 /*弹出服务列表*/
 .service .service_lists {
@@ -97,5 +145,18 @@ h1,h2,h3,h4,h5,h6,p,ul,ol,dl,dd{
     box-sizing: border-box;
     position: absolute;
     top:28px;
-    left: 5px;
+    left: 6px;
+    display: none;
+}
+
+/*鼠标经过，弹出菜单*/
+li.service:hover .service_lists {
+    display: block;
+
+}
+
+li.service:hover>a{
+    border-color: #dddddd;
+     background: url(../imgs/jt_up.jpg) no-repeat 95% center;
+     background-color: #ffffff;
 }
