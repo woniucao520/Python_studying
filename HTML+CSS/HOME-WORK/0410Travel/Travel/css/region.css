@@ -1,0 +1,322 @@
+/*top的第二部分*/
+.top_second{
+    height: 55px;
+    background-color: #666666;
+}
+
+/*给logo设置边框和大小*/
+.top_second_box{
+    width: 1200px;
+    margin: 0 auto;
+   padding-top:16px ;
+}
+.logo_right img,
+.search img {
+    padding: 0 25px;
+}
+/*边框*/
+.search b,
+.logo_item b{
+    display: inline-block;
+    height: 21px;
+    border-left: 2px solid #999999;
+
+}
+
+/*banner部分*/
+.banner{
+    margin-top: 57px;
+}
+
+
+.regional_guildelines_box,
+.hot_recommend_box,
+.banner_box{
+    margin: 0 auto;
+    width: 1200px;
+}
+.banner .banner_img{
+    width: 970px;
+    height: 560px;
+    background: url(../imgs/region/banner2.jpg) no-repeat left center;
+}
+
+/*banner右半部分文字排列*/
+.banner .country{
+    width: 160px;
+    height: 560px;
+    background: #666666;
+    text-align: center;
+
+}
+
+/*文字*/
+.country>p{
+    font-size: 24px;
+    color: #ffffff;
+    height: 65px;
+    width: 85px;
+    line-height: 65px;
+    margin-left: 38px;
+    border-bottom: 1px solid #999999;
+}
+
+/*热门推荐*/
+.hot_recommend{
+    margin:30px 0 30px 0 ;
+}
+
+.hot_recommend_box>p{
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+/*推荐景点*/
+.attraction{
+    background: #ffffff;
+    padding: 30px 0 45px 0;
+}
+
+.item{
+    float: left;
+    margin-left: 32px;
+}
+.item>.photo{
+     width: 200px;
+
+    position: relative;
+    box-shadow: 2px 2px 2px 2px #999999;
+    padding: 10px 0;
+
+}
+
+.item .photo .img_box{
+    width: 185px;
+    height: 255px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+/*移动图片：显示指定图片部分*/
+/*方法一：设置为负数*/
+/*https://zhidao.baidu.com/question/1766111211549522540.html*/
+.item .photo .img_box img{
+    margin-left: -10px;
+}
+.item .text{
+    position: absolute;
+    top:25px;
+    left: 15px;
+    color: #ffffff;
+    line-height: 25px;
+}
+/*图片文字大小*/
+.item .text>p{
+    font-size: 18px;
+
+}
+.item .text>h3{
+    font-size: 20px;
+}
+
+/*图片下半部分文字*/
+/*文字标题*/
+.item .title{
+    margin: 15px 0;
+    font-size: 20px;
+    color: #5696ff;
+}
+/*下载阅读*/
+.item .down_read{
+    width: 200px;
+    height: 40px;
+    background: #5696ff;
+    border-radius: 4px;
+    line-height: 40px;
+    text-align: center;
+}
+
+
+
+.item .down_read a p{
+    font-size: 18px;
+    color: #ffffff;
+    text-align: center;/*设置居中：无需设置宽度*/
+
+}
+/*鼠标滑过：*/
+.item .down_read:hover>p{
+    color: #ffffff;;
+}
+
+/*地区指南*/
+.regional_guildelines{
+    margin: 30px 0 50px 0;
+}
+
+/**/
+.down_lists .down_item{
+    margin-bottom: 10px;
+}
+/*左侧部分：下载列表*/
+.down_regional>p{
+    font-size: 18px;
+    color: #333333;
+    padding-bottom: 15px;
+    font-weight: bold;
+}
+
+/*下载记录*/
+/*圆形头像*/
+.head_portrait{
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+/*右侧部分文字：他刚刚下载了XXX*/
+.down_item>p{
+    margin-left: 10px;
+    font-size: 16px;
+    color: #666666;
+    line-height: 40px;
+}
+.down_item p>a{
+    color: #5696ff;
+    font-size: 16px;
+}
+
+/*右侧标题：全部地区指南*/
+.all_regional{
+    width: 846px;
+}
+
+.all_regional>p{
+    font-size: 24px;
+    font-weight: normal;
+    color: #333333;
+      margin-left: 40px;
+
+}
+
+/*按时间更新和按下载量*/
+
+.all_regional .category{
+    margin: 15px 0 15px 40px;
+}
+.all_regional .category>a{
+    display: inline-block;
+    height: 25px ;
+    font-size: 18px;
+    color: #333333;
+    line-height: 25px;
+}
+.all_regional .category .on{
+    color: #5696ff;
+}
+
+/*中间分隔边框*/
+.all_regional .category>b{
+    display: inline-block;
+    height: 15px;
+    border-left: 1px solid #666666;
+    margin: 0 15px;
+
+}
+
+.regional_lists{
+    margin-left: 40px;
+}
+
+.items{
+    float: left;
+    margin-bottom: 25px;
+}
+
+.items:not(:first-child){
+    margin-left: 28.6px;
+}
+
+.regional_lists>.items>p{
+    font-size: 16px;
+    color: #666666;
+}
+
+/*照片大小*/
+.items>.photo{
+     width: 180px;
+
+    position: relative;
+    box-shadow: 2px 2px 2px 2px #999999;
+    padding: 10px 0;
+
+}
+
+.items .photo .img_box{
+    width: 160px;
+    height: 230px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+/*移动图片：显示指定图片部分*/
+/*方法一：设置为负数*/
+/*https://zhidao.baidu.com/question/1766111211549522540.html*/
+.items .photo .img_box img{
+    margin-left: -80px;
+    margin-top:-10px;
+}
+.items .text{
+    position: absolute;
+    top:0px;
+    left: 15px;
+    color: #ffffff;
+    line-height: 25px;
+}
+/*图片文字大小*/
+.items .text>p{
+    font-size: 18px;
+
+}
+.items .text>h3{
+    font-size: 20px;
+}
+
+/*图片下半部分文字*/
+/*文字标题*/
+.items .title{
+    margin: 15px 0;
+    font-size: 20px;
+    color: #5696ff;
+}
+
+/*分页部分*/
+.page{
+    margin: 30px 0 30px 40px;
+}
+.pagination{
+    display: inline-block;
+}
+.pagination li{
+    display: inline-block;
+    font-size: 18px;
+    color: #666666;
+    margin-right: 20px;
+}
+
+.pagination li.active a{
+    color: #5696ff;
+}
+
+.pagination li:first-child,
+.pagination li:last-child{
+    height: 60px;
+    border: 1px solid #666666;
+    line-height: 60px;
+    text-align: center;
+    padding: 0 60px;
+}
+

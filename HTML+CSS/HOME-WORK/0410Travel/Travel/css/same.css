@@ -1,0 +1,143 @@
+@charset "utf-8";
+/* CSS Document */
+html,body{
+	margin:0;
+	padding:0;
+	font-size:14px;
+	font-family:'微软雅黑',Arial, Helvetica, sans-serif;
+	}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,form,fieldset,input,textarea,img{
+	margin:0;
+	padding:0;
+	list-style:none;
+	border:0;
+	}
+/*左右浮动*/
+.fl{
+	float: left;
+}
+
+.fr{
+	float: right;
+}
+
+/*清除浮动*/
+
+.clear_float:after,  /*伪类，清除浮动*/
+.clear_float:before{
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+
+a:link {
+ color: #333;
+ text-decoration: none
+}
+a:visited {
+	color: #333;
+ text-decoration: none
+}
+a:hover {
+color: #5696ff;
+ text-decoration: none;
+}
+a:active {
+ color: #f60;
+ text-decoration:none;
+}
+h1,h2,h3,h4,h5{
+	font-size:14px; font-weight:normal;
+	}
+h6{
+	font-size:12px; font-weight:normal;
+	}
+p{
+	font-size:13px;
+	}
+
+
+
+
+body{
+    background: #f3f3f3;
+}
+
+/*第一部分：header*/
+.header{
+    background: #fff;
+}
+
+/*是内容居中显示*/
+.container .container-box,
+.header_box{
+    width: 1200px;
+    margin: 0 auto ;
+}
+/*.header-box .logo{*/
+    /*line-height: 70px;*/
+    /*height: 70px;*/
+/*}*/
+.header_box .logo .logo-img{
+    padding-top: 5px;
+}
+
+.header_box .logo .logo-text{
+    padding-bottom:5px ;
+}
+
+/*导航部分*/
+.nav{
+       margin-left: 160px;
+}
+.nav li{
+    float: left;
+    width: 85px;
+    text-align: center;
+}
+.nav .index{
+    color: #fefeff;
+    background: #5696ff;
+
+}
+.login a,
+.nav li a{
+    color: #3c3d46;
+    font-size: 18px;
+    line-height: 70px;
+}
+/*鼠标滑过：背景色变*/
+.nav li:hover{
+    background: #5696ff;
+    color: #fefeff;
+}
+
+
+
+
+
+
+
+/*登录，注册部分*/
+.login a:first-child{
+    height:14px ;
+    padding-right: 10px;
+    margin-right: 5px;
+    border-right: 2px solid #999999;
+}
+
+
+
+/*页脚部分*/
+.footer{
+    background: #5696ff;
+
+}
+
+.footer p{
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+}
