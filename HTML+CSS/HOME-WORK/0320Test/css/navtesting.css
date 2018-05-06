@@ -1,0 +1,108 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.fl{
+    float: left;
+}
+
+.fr{
+    float: right;
+}
+
+.clear-float:after,  /*伪类，清除浮动*/
+.clear-float:before{
+    content: " ";
+    display: block;
+    clear: both;
+
+}
+
+.navtop{
+    width: 100%;
+    background: #ffffff;
+
+}
+
+.container{
+    width: 1000px;
+    margin: 0 auto;
+
+}
+
+.navtop .container{
+    padding: 20px 0;
+
+}
+
+
+.logo-text{
+    padding-top: 9px;
+}
+.logo-text a{
+    color: #ffbb36;
+    font-size: 20px;
+    font-weight: bold;
+    padding-right: 5px;
+
+}
+
+.logo-text span{
+    color: #cdcdcd;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.logo-tel a{
+     color: #cdcdcd;
+    font-size: 10px;
+    text-align: right;
+
+}
+
+.logo-tel h4{
+    color: #b5aab3;
+    font-size: 12px;
+    text-align: right;
+}
+
+/*下半部分*/
+
+.navbottom{
+
+    background: #2a2a2a;
+}
+
+.navbottom .container ul{
+    float: left;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+}
+
+.navbottom .container ul li{
+    float: left;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    color: #ebebeb;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+.navbottom .container ul li.on{
+
+    background: #ffbb36;
+
+}
+
+.navbottom .container ul li>a{
+    text-decoration: none;
+    color: #ffffff;
+}
+

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏的练习</title>
+    <link rel="stylesheet" href="css/navtesting.css">
+    <script>
+
+        window.onload = function () { //window.onload,确保要操作的对象已经加载完成之后，才能进行Dom操作
+            //之前直接操作节点，没有实现效果，这是因为代码都是按顺序执行的，没有加载到需要dom操作的对象。
+            //获取li标签的个数
+            var L = document.getElementsByTagName("li");
+
+            for (var i=0;i<L.length;i++) {
+                //先清空所有的li的class，排他思想
+                L[i].onmouseover = function () { //鼠标移入事件绑定
+                    for(var j=0;j<L.length;j++){
+                            L[j].className=" ";
+                            }
+                //自己本身设置clss=on;
+                    this.className="on";
+                }
+                L[i].onmouseout = function () { //鼠标移出事件
+                    this.className = "";
+
+                }
+              }
+        }
+        </script>
+
+
+</head>
+<body>
+
+<div class="nav">
+
+    <div class="navtop">
+        <div class="container clear-float">
+            <div class="logo-text fl">
+                <a>Advertising</a>
+                <span>Design</span>
+            </div>
+            <div class="logo-tel fr">
+                <a>全国客服电话</a>
+                <h4>400-000000</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="navbottom clear-float">
+        <div class="container clear-float">
+            <ul>
+                <li class="on"><a>首页</a></li>
+                <li><a href="#">关于我们</a></li>
+                <li><a href="#">客户案例</a></li>
+                <li><a href="#">新闻资讯</a></li>
+                <li><a href="#">我们的团队</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>
