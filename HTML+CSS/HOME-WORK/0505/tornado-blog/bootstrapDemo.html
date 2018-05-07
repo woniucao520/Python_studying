@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Demo</title>
+    		<!-- meta -->
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	
+	
+
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+
+
+
+    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+
+
+
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-4" style="background-color: #dedef8;box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+
+
+
+            <div class="form-group" >
+
+
+
+
+
+                    <select class="form-control " name="Province" id="Province" style="margin-top: 20px">
+                        <option>==选择数据库===</option>
+
+                    </select>
+
+
+
+
+
+                    <select class="form-control" name="City" id="City"  style="margin: 20px 0">
+                        <option>==请选择选择表===</option>
+
+                    </select>
+
+
+
+                    <select class="form-control" name="Village" id="Village">
+                        <option>==请选择查询字段===</option>
+
+                    </select>
+
+            </div>
+
+        </div>
+
+         <div class="col-md-8" style="background-color: #dedef8;box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+
+             <div class="row" style="margin:20px">
+                 <p>输入SQL语句：</p>
+                  <textarea class="form-control" rows="10"></textarea>
+
+                 <div class="sql_toolbar" style="margin-top: 10px">
+                     <button type="button" class="btn btn-sm btn-primary">
+                        <span class="glyphicon glyphicon-refresh"></span>
+                         Run Query
+                     </button>
+
+                      <button type="button" class="btn btn-sm btn-primary" style="margin-left: 20px">
+                        <span class="glyphicon glyphicon-saved"></span>
+                         Save Query
+                     </button>
+                 </div>
+
+
+                 <!--显示结果-->
+                   <ul class="nav nav-tabs">
+                        <li class="active"><a href="#">Result</a></li>
+                        <li><a href="#">SVN</a></li>
+                        <li><a href="#">iOS</a></li>
+                        <li><a href="#">VB.Net</a></li>
+
+                        <li><a href="#">PHP</a></li>
+                </ul>
+            </div>
+
+         </div>
+
+     </div>
+
+</div>
+
+
+
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
+
+    <!--三级联动的js-->
+
+<script>
+
+//模拟数据~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ var items=[
+                {
+                'province_id':22,
+                'province_name': '山东',
+                'citys': [
+                            {
+                            'city_name': '聊城市',
+                            'city_id':291,
+                            'areas': ['莘县', '阳谷县'],
+                            },
+                            {
+                            'city_name': '济南市',
+                            'city_id':283,
+                            'areas': ['历下区', '市中区'],
+                            }
+                    ]
+                },
+
+                 {
+                'province_id':26,
+                'province_name': '江苏',
+                'citys': [
+                            {
+                            'city_name': '扬州',
+                            'city_id':100,
+                            'areas': ['江都', '高邮','宝应'],
+                            },
+                            {
+                            'city_name': '南京市',
+                            'city_id':103,
+                            'areas': ['江宁区', '秦淮区','建邺区'],
+                            },
+                            {
+                            'city_name': '连云港',
+                            'city_id':111,
+                            'areas': ['灌云区', '赣榆区','东海区'],
+                            }
+
+                    ]
+                },
+
+             {
+                'province_id':30,
+                'province_name': '安徽',
+                'citys': [
+                            {
+                            'city_name': '宣城',
+                            'city_id':200,
+                            'areas': ['宣城A', '宣城B','宣城C'],
+                            },
+                            {
+                            'city_name': '马鞍山',
+                            'city_id':203,
+                            'areas': ['马鞍山A', '马鞍山B','马鞍山C'],
+                            }
+                    ]
+                },
+
+        ]
+
+//模拟数据~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+//第一步：自动填充省份
+        function  showProv() {
+        //获取省份元素：
+           var selectProv = $("#Province");
+
+
+            var len = items.length;
+
+            for(var i=0;i<len;i++){
+
+                var option = '<option value="'+items[i]['province_id']+'">' + items[i]['province_name']+'</option>';
+                selectProv.append(option);
+
+
+            }
+        }
+
+
+//第二步：选择市:主要通过传过来的省的id去判断
+        function  showCity(p_id) {
+            //获取市
+            var selectCity = $("#City");
+
+
+
+             var len = items.length;
+                 for(var i=0;i<len;i++){
+                     if(items[i]['province_id'] == p_id){
+                         var Citylen = items[i]['citys'];
+
+                         for(var j=0;j<Citylen.length;j++){
+                             //添加元素到市
+                                var option = '<option value="'+Citylen[j]['city_id']+'">' + Citylen[j]['city_name']+'</option>';
+                                selectCity.append(option);
+
+                         }
+                     }
+                 }
+
+        }
+
+//第三步：获取区，根据前面的省，市来填充
+        function showAreas(c_id) {
+                var selectAreas = $("#Village");
+                for(var i=0;i<items.length;i++){
+                    for(var j=0;j<items[i]['citys'].length;j++){
+                           var Citylen = items[i]['citys'];
+                        if(items[i]['citys'][j]['city_id'] == c_id){
+                            var Areaslen = items[i]['citys'][j]['areas'];
+                            for(var k=0;k<Areaslen.length;k++){
+                                 var option = '<option value="'+Citylen[j]['city_id']+'">' + Areaslen[k]+'</option>';
+                                selectAreas.append(option);
+
+                            }
+                        }
+                    }
+                }
+
+        }
+
+
+
+        $(document).ready(function () {
+            showProv();
+            showCity(0);
+            showAreas(0);
+
+            //获取省份的id
+            $("#Province").change(function () {
+                var p_id = $(this).val();
+                  $("#City").find("option").not(":first").remove();//重点：重新选择省的时候，清除上一次的市，区节点
+
+
+                showCity(p_id);
+                  $("#Village").find("option").not(":first").remove(); //重点：清除区的操作，只保留一个节点
+                //获取市的id;
+//                var c_id =  $("#City").val();
+//                showAreas(c_id);
+            })
+            //根据市的id，获取区
+            $("#City").change(function () {
+                var c_id = $(this).val();
+                 $("#Village").find("option").not(":first").remove();  //重点：重新选择市，清除上一次的区地址
+                showAreas(c_id);
+            })
+
+        })
+
+
+    </script>
+
+</body>
+</html>
