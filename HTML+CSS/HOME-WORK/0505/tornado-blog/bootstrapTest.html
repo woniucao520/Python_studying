@@ -8,8 +8,8 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 
-	
-	
+
+
 
 	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -76,7 +76,7 @@
                          Run Query
                      </button>
 
-                      <button type="button" class="btn btn-sm btn-primary" style="margin-left: 20px">
+                      <button type="button" id="save" class="btn btn-sm btn-primary" style="margin-left: 20px">
                         <span class="glyphicon glyphicon-saved"></span>
                          Save Query
                      </button>
@@ -238,10 +238,35 @@
 
 
 
+        function saveQuery() {
+            $("#save").click(function () {
+               //定义敏感词汇组
+                var senstive_word = ["delete","truncate","drop"];
+              var areatext =   $("textarea").val();
+              console.log("输入的文本框的内容"+areatext);
+              for(var i =0;i<senstive_word.length;i++){
+                  if(areatext.indexOf(senstive_word[i])>=0){
+                      //如果包含
+                      alert("包含的词汇是"+senstive_word[i]);
+
+
+
+                  }
+              }
+
+            })
+        }
+
+
+
+
         $(document).ready(function () {
+
             showProv();
             showCity(0);
             showAreas(0);
+
+             saveQuery();
 
             //获取省份的id
             $("#Province").change(function () {
@@ -261,6 +286,13 @@
                  $("#Village").find("option").not(":first").remove();  //重点：重新选择市，清除上一次的区地址
                 showAreas(c_id);
             })
+
+            //******************************************************************************************
+            //********************判断textarea里是否存在敏感词汇sensitive world***********************************************
+              //第一步： 获取textaree里的输入文本
+
+
+
 
         })
 
