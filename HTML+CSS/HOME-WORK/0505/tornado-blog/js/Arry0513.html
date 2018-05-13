@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组常用方法</title>
+</head>
+<body>
+
+<!--动态添加数组-->
+<select id ="selProvs">
+
+</select>
+
+
+<script>
+
+    //数组转字符串
+    var provs = ["江苏","南京","北京","上海"];
+
+    var before = String(provs);
+    provs[provs.length]="台湾";
+    console.log(String(provs)); //String相当于拍照功能
+
+    var after = String(provs);
+    if(before!=after){
+        console.log("已经被修改了")
+    }
+    else {
+        console.log("未被修改");
+    }
+
+//动态添加元素
+
+    //将数组链接成字符串
+    var html ="<option>"+ provs.join("</option><option>")+"</option>";
+    console.log(html);
+    document.getElementById("selProvs").innerHTML=html;
+
+//数组的连接：concat
+    //concat 返回连接的新对象，原来数组不变,用变量接住返回的新数组
+    var arr1 =[12,13,14];
+    var arr2 = [99,98,[66,361]];
+    var arr3 = arr1.concat(50,100,arr2);//返回新的数组
+    //concat会打散参数中的子数组，成为单个元素，单个拼接
+    console.log("拼接完的新数组为："+arr3); //拼接完的新数组为：12,13,14,50,100,99,98,66,361
+
+//无缝拼接
+    var result = arr3.join();
+
+//数组的切割：获取元素中指定位置到结束位置的所有元素：slice
+    var sub = arr3.slice(3,5+1);// 如果全是下标，就是含头不含尾，获取末尾元素就+1
+    console.log("切取"+String(sub));
+    console.log("原数组"+String(arr3));
+//支持负数参数（-n = length-n)倒数第n个元素;
+    var  birdth = arr3.splice(2,arr3.length-5+1)//获取倒数第5个元素
+//获取倒数4个元素
+    var  last4= arr3.slice(-4);
+
+//复制两个数组，修改互不影响
+    var arr1_copy =arr1.splice() ;//返回一个新数组；
+    var arr3_copy = arr3; //公用的同一个数组内存地址，修改会互相影响
+    //验证
+    console.log(arr1_copy == arr1); //false
+    console.log(arr3_copy == arr3); //true
+
+
+/*
+*
+* 重点：splice():
+* 返回值：返回被删除的元素
+* 1.直接修改原数组
+* 2.不用考虑含头不含尾（两个数全是下标才考虑）
+*
+* */
+//demo：删除开头的两个图片并
+    var imgs = [1,4,3,9,10];
+    var deletesimgs = imgs.splice(0,2);
+    console.log("deletes返回的"+deletesimgs);
+    //拼接到imgs数组的末尾
+    imgs = imgs.concat(deletesimgs);
+    console.log("删除后拼接完的imgs为："+imgs);
+
+//删除最后的两个，并拼接到前面
+    var  myphptos = ["sea","flower","love","i","you"];
+    var deletephotos = myphptos.splice(-2,2);//第二个2是步长；
+    //删除的在前面，就是原数组在后面；
+    myphptos = deletephotos.concat(myphptos);
+    console.log("将删除的拼接到末尾后的myphotos："+myphptos);
+
+
+//splice ：插入
+    //arr.splice(starti,值1，值2)：将值1，值2插入到arr中starti的位置，后面元素后移
+    //不会打散数组参数
+    var myarr = [1,2,3];
+    var herarr = [111,120,110];
+    myarr.splice(2,0,99,66,herarr);
+    console.log("插入后的元素："+myarr);
+
+
+//splice():替换
+//    arr.splice(start,n,值1，值2); 先删除start位置开始的n个元素，再在starti位置插入值1，值2
+    herarr.splice(1,1,9981,7749,8864);
+    console.log("herarr替换后的元素"+herarr);
+
+
+
+
+    </script>
+
+
+</body>
+</html>

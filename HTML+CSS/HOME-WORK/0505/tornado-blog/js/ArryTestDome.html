@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组练习</title>
+</head>
+<body>
+//创建数组
+//创建新数组
+var arr = [];
+var arr = new Array();
+
+//创建数组的同时并初始化数组内容：已经知道数组内容
+var arr = ["hahah","lalal","heheh"];
+var arr = new Array("hahah","lalal","heheh"); //new Array不可以改变
+
+//创建n个空数组
+var arr= new Array(20);
+
+//查看数组的存储结构
+console.dir();
+
+//数组默认从0开始，对数组元素的取值与赋值
+arr[i]
+arr[1]="cxuewei"//替换掉原先位置的值
+
+//下标越界，不会报错，返回undefined；但是赋值也不会报错，自动在指定位置赋值
+arr[5];
+arr[5] = "hello"; //会添加到数组里
+
+//添加新元素后，下标不连续——稀疏数组
+
+
+//.length属性：不能反映实际数组长度，永远是最大下标+1；
+//获取数组倒数第一个元素
+arr[arr.length-1];
+arr[arr.length-n];//倒数第n个数据；
+
+//向末尾追加元素
+arr[arr[length]] = 值
+
+//删除数组末尾的最后元素
+arr.length--;
+
+//删除最后两个元素
+arr.length-=2;
+
+
+
+
+</body>
+</html>

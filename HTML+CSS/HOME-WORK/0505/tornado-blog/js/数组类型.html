@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组类型</title>
+</head>
+<body>
+
+//原始类型 和 引用类型；
+//引用类型：数据无法保存在本地的数据
+
+//一个变量只允许保存一个值
+//在window之外，创建独立存储空间
+
+//原始类型：
+<script>
+  /*
+  * 按值传递：两个变量之间赋值时，将变量作为参数传入函数中，其实本质是将原始变量中的值copy一个副本来传递
+  * 原始类型：修改新变量，不会对原变量的值有所影响
+  *
+  * 引用类型：用新变量修改数组，等效于直接修改原始数组
+  * why：
+  * 引用类型按值传递，copy的是内存地址值，实际的数组只有一个
+  *
+  * */
+//按值传递 demo
+    var card = 10;//全局变量：原始数据
+    function payMoney(card) {  //局部变量：copy后的值
+        card-= 3;
+        console.log("余额的钱："+card);  //7：局部变量
+    }
+    payMoney(card); //全局变量：copy了card=10,传入了函数中
+    console.log("余额："+card);  //10
+
+//数组
+
+var my=["油条","肉包子","红枣糕","粽子","菜包子"];
+var  xu = my; //复制了同一个内存地址：实际数组对象是同一个；
+xu.length--; //xu从末尾减少一个元素；
+console.log("他吃完后："+String(my));
+my.length--; //wo 从末尾减少一个元素；
+console.log("我吃完以后"+String(xu));
+
+
+var baos = ["油条","肉包子","红枣糕","粽子","菜包子"];
+function eat(baos) {
+    baos.length--;
+    console.log('函数内的'+String(baos));
+  }
+
+  eat(baos);
+console.log('函数外的'+String(baos));
+
+
+
+
+//null 和 undefined
+//    null：原始类型：专门给coder使用，手动清除一个变量内容
+//
+//何时需要清空一个对象：
+//  一个变量引用的大对象不用了，主动清空为null，避免内存浪费。
+//  垃圾回收器：专门回收不再使用的对象的小程序
+//  1、记录每个对象，被几个变量引用着：没多一个变量，counter就+1；
+//   当一个变量赋值为null时，表示不再引用对象，计数器counter-1；
+//  2、回收不再被任何变量引用的对象；
+//  当counter=0时，对象就被垃圾回收器回收；
+    //undefined：为变量自动赋初始值
+
+
+//遍历：对数组中的每个元素依次执行相同的操作；
+    var week = ["一","二","三","四","五","六"];
+    for(var i=0;i<week.length;i++){
+        week[i] = "星期"+week[i]; //遍历的当前对象
+    }
+    console.log(String(week));
+
+
+
+//关联数组！！！！自定义下标值；{键值对的集合}；
+var ym=[];
+ym["name"] = "杨幂";
+ym["math"] = 89;
+ym["chs"]=53;
+ym["english"]=89;
+console.dir(ym);
+//使用ym中的每个元素
+console.log(ym["math"]);
+ym["math"]+=8;
+console.dir(ym);
+for(var key in ym){ //遍历ym的每个元素
+    console.log("关联数组里的每个元素值"+key+":"+ym[key]);
+}
+
+//反复输入员工姓名保存在数组中
+//    var emps = [];
+//    var input;
+//    //反复：如果输入的不是exit
+//    //请用户输入员工姓名
+//    while ((input=prompt("请输入员工姓名"))!="exit"){
+//        //将input添加到数组末尾
+//        emps[emps.length]=input;
+//    }
+//        console.log(String(emps));
+
+
+//找到一个数组中的最大值；
+    function max(arr) {
+        //将arr中第一个元素保留在变量max中;
+        var max =arr[0];
+        //从1开始遍历，
+        for(var i=1;i<arr.length;i++){
+             // 如果arr中当前元素>max
+            if(arr[i]>max){
+                  //修改max为arr中当前元素
+                max = arr[i];
+            }
+
+        }
+
+        //遍历结果
+        return max;
+    }
+
+    console.log(
+        max([3,1,23,9]),
+        max([1,5,2,68,99,3])
+
+    );
+
+//定义函数，去掉数组中的重复元素。
+//方法一：遍历
+    function unique1(arr) {
+        //遍历数组，并定义一个空数组result;
+        var result = [];
+        for(var i=0;i<arr.length;i++){
+            //遍历result数组
+            for(var j=0;j<result.length;j++){
+                //如果result的当前元素 = arr的当前元素，就跳出此次循环；
+                if(result[j] == arr[i]){
+                    break;}
+              }
+
+
+            console.log("此时此刻的j为："+j);
+            if(j == result.length){
+            //将当前元素添加到result中
+            result[result.length]=arr[i];
+            }
+
+        }
+      return result;
+    }
+
+
+//方法二：hash定义空数组
+  function unique2(arr) {
+
+        //循环数组里的每个元素
+      //创建两个空数组：result 和 hash
+        var hash=[];
+        var result=[];
+        for(var i=0;i<arr.length;i++){
+            //如果hash的当前为key的元素是undefined，代表没有出现过的数组
+            if(hash[arr[i]] === undefined){
+                result[result.length] = arr[i];  //将没有重复的数组，放在result的结果集合里面
+                hash[arr[i]]=1;//已经遍历过的元素，做好标记
+            }
+
+        }
+        return result;
+
+  }
+
+   var arr= [1,3,5,2,3,5,6,8];
+      var arr2= [11,13,15,2,13,15,16,18];
+
+    console.log(
+        unique1(arr),
+        unique2(arr2)
+    );
+
+
+
+
+
+
+  </script>
+</body>
+</html>
