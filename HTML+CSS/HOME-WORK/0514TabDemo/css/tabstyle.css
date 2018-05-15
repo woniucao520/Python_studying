@@ -1,0 +1,48 @@
+#wrap{
+    width: 1200px;
+    margin: 0 auto;
+    padding-top: 50px;
+    position: relative; /*相对定位，为了给content做参考*/
+}
+
+.tabdemo>li{
+    float: left;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    background: beige;
+    border: 1px solid #999999;
+    /*border-bottom: 0;*/
+    text-align:center;
+    margin-left: 5px;
+    position: relative; /*为了设置z-inde属性*/
+    z-index: 10;
+}
+/*鼠标点击效果*/
+
+.tabdemo>.active{
+    background: white;
+    border-bottom-color:white ;
+}
+
+li>a{
+    display: inline-block;
+    font-size: 16px;
+}
+
+/*css注释：显示内容样式*/
+#content{
+    width: 325px;
+    border: 1px solid #999999;
+
+    padding: 10px;
+    position: absolute;  /*设置位置变化*/
+    top:86px;
+    z-index: 1;
+}
+
+/*对应的内容显示*/
+.hidden{
+    display: none;
+}
+

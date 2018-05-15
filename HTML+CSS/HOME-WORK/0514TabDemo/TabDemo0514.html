@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS之Tab选项卡</title>
+    <!--引入外部css样式-->
+
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <link rel="stylesheet" href="css/TabStyle.css" type="text/css">
+
+    <!--引入外部js文件-->
+    <script type="text/javascript" src="js/tabdemo.js"></script>
+
+    <script>
+        window.onload = function () {
+            //填写js逻辑
+            //获取ul里li的个数
+            var tab_li = document.getElementsByTagName("li");
+            //获取要显示的div的个数
+            var content = document.getElementById("content");
+            var content_div = content.getElementsByTagName("div");
+
+            //给li添加鼠标点击事件
+            for(var i= 0;i<tab_li.length;i++){
+                     tab_li[i].index = i;  //重点，为了让i在循环体内
+                tab_li[i].onmouseover = function () {
+                    //这里的i永远=3，如果不设置 tab_li[i].index = i
+                    //清除之前的样式
+                    for(var j=0;j<tab_li.length;j++){
+                            //没有点击事件，j=0,1,2
+                        tab_li[j].classList.remove("active");
+                        content_div[j].setAttribute("class","hidden");
+                    }
+                    //设置自己本身的样式:添加class=active
+                    this.setAttribute("class","active");
+                    //content_div[i].classList.remove("hidden"); 无效，i=3导致
+                 //将对应的内容显示出来
+                     content_div[this.index].classList.remove("hidden");
+
+
+
+
+
+
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+
+<!--选项卡html-->
+
+<div id="wrap">
+    <ul class="tabdemo clear-float">
+        <li class="active"><a href="#">选择1</a></li>
+        <li><a href="#">选择2</a></li>
+        <li><a href="#">选择3</a></li>
+    </ul>
+
+    <!--弹出内容-->
+    <div id="content">
+        <div id="first" class="show">
+            <a href="#">内容一</a>
+            <a href="#">内容一</a>
+            <a href="#">内容一</a>
+            <a href="#">内容一</a>
+        </div>
+
+        <div id="second" class="hidden">
+            <a href="#">内容二</a>
+            <a href="#">内容二</a>
+            <a href="#">内容二</a>
+            <a href="#">内容二</a>
+        </div>
+
+        <div id="third" class="hidden">
+            <a href="#">内容三</a>
+            <a href="#">内容三</a>
+            <a href="#">内容三</a>
+            <a href="#">内容三</a>
+        </div>
+
+
+    </div>
+
+</div>
+
+</body>
+</html>
