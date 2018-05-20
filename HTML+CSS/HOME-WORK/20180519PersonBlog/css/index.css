@@ -1,0 +1,34 @@
+.middle_box{
+    width: 1000px;
+    margin: 0 auto;
+}
+
+
+/*头部：logo与导航栏*/
+.toplogo{
+    margin: 10px 0;
+}
+
+.topnav{
+    background: #5696ff;
+    width: 55%;
+    height: 50px;
+    border-radius: 45px;
+    border: 1px solid #333333;
+}
+
+.topnav ul li{
+    float: left;
+    width: 80px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.topnav ul li>a{
+    font-size: 18px;
+
+}
+
+
+
+
