@@ -97,8 +97,11 @@ li:hover{
 /*实现类似进度条效果*/
 .attention_me{
     width: 35%;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
+
+.friend_link>h3,
+.tag_cloud>h3,
 .attention_me>h3{
     height: 40px;
     line-height: 40px;
@@ -106,16 +109,21 @@ li:hover{
     border-bottom: 1px solid #E6E6E6;
     position: relative;
 }
+
+.friend_link>h3:after,
+.tag_cloud>h3:after,
 .attention_me>h3:after{
     content: "";
     width: 0;
     height: 1px;
-    background: blue;
+    background: #5696ff;
     position: absolute;
     top:100%;
     left:0%;
     transition: all .8s;
 }
+.friend_link>h3:hover:after,
+.tag_cloud>h3:hover:after,
 .attention_me>h3:hover:after{
     width: 100%;
 }
@@ -155,3 +163,183 @@ a.qq{
     width: 100%;
     height: 105px;
 }
+
+
+/*文章推荐部分*/
+/*靠左外边框*/
+.article_recommended>.article_left{
+    width: 670px;
+}
+
+/*右边框*/
+.article_recommended>.article_right{
+      width: 35%;
+    height: 500px;
+
+}
+
+/*文章推荐：字体大小，下边框*/
+.article_title>h2{
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+   border-bottom: #db6d4c 4px solid
+}
+
+/*单个文章列表*/
+.article_lists>.item{
+    padding: 25px 0;
+    border-bottom: 1px solid #999999;
+
+}
+
+
+
+/*鼠标移动图片，会放大，离开就还原*/
+.item .img_left {
+    width: 168px;
+    height: 136px;
+
+
+                overflow: hidden;
+
+}
+.item .img_left>img{
+                cursor: pointer;
+                transition: all 0.8s;
+            }
+.item .img_left>img:hover{
+                transform: scale(1.2);
+            }
+
+/*单个文章列表右侧：
+标题,内容*/
+.item .article_text{
+
+    width: 72%;
+}
+.item .article_text h3>a{
+    display: inline-block;
+    font-size: 15px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    color: #474645
+}
+.article_text>p{
+    font-size: 12px;
+    line-height: 20px;
+    color: #CECECE;
+}
+
+/*个人博客，日期，浏览量，评论数的logo*/
+.little_tag{
+    padding: 15px 0 10px 0 ;
+}
+.little_tag .person_blog{
+    background: url(../images/newsbg01.png) no-repeat left center;
+    padding-left: 20px;
+}
+
+.little_tag .dtime{
+    background: url(../images/newsbg02.png) no-repeat left center;
+    padding-left: 20px;
+    margin-left: 10px;
+}
+
+.little_tag .comments_num{
+    background: url(../images/newsbg03.png) no-repeat left center;
+    padding-left: 20px;
+    margin-left: 190px;
+}
+
+.little_tag .views{
+    background: url(../images/newsbg04.png) no-repeat left center;
+    padding-left: 20px;
+    margin-left: 10px;
+}
+
+/*右半部分的点击排行*/
+ul.click_title{
+    border-bottom: 1px solid #999999;
+}
+
+ul.click_title>li a{
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+
+}
+
+/*对应的点击显示内容*/
+
+
+ul.click_title>li.cur a{
+    background: #f60;
+    color:  white;
+}
+
+.click_main {
+ margin-top: 20px;
+}
+.item_text>ul>li{
+    height: 30px;
+    line-height: 30px;
+    border-bottom: solid 1px #EAEAEA;
+
+}
+.item_text>ul>li>a{
+    font-size: 12px;
+    color: #666666;
+    padding-left: 35px;
+
+}
+
+.item_text>ul>li:first-child{
+    background: url(../images/header/sunny.gif) no-repeat;
+}
+/*鼠标经过效果*/
+.item_text>ul>li:hover{
+    border-bottom: 1px solid #666666;
+}
+.item_text>ul>li:hover a{
+    color: #333333;
+}
+.item_text{
+    display: none;
+}
+.show{
+    display: block;
+}
+
+/*标签云*/
+.article_right .tag_cloud{
+    margin: 20px 0;
+}
+
+/*友情链接*/
+.friend_link>ul{
+    margin-top: 15px;
+    background: #f9f9f9;
+    padding: 10px;
+    border: #e9e9e9 1px solid;
+}
+.friend_link>ul>li a{
+    float: left;
+    padding: 5px 8px;
+   font-size: 13px;
+}
+
+
+/*页脚部分*/
+.footer>p{
+    height: 30px;
+    line-height: 30px;
+    background: #333333;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+}
+
