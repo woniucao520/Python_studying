@@ -1,12 +1,12 @@
 .middle_box{
-    width: 1000px;
+    width: 1100px;
     margin: 0 auto;
 }
 
 
 /*头部：logo与导航栏*/
 .toplogo{
-    margin: 10px 0;
+    margin: 10px 0 20px 0;
 }
 
 .topnav{
@@ -14,8 +14,14 @@
     width: 55%;
     height: 50px;
     border-radius: 45px;
-    border: 1px solid #333333;
+    /*border: 1px solid #333333;*/
+
 }
+
+.topnav ul{
+     padding-left: 50px;
+}
+
 
 .topnav ul li{
     float: left;
@@ -26,9 +32,126 @@
 
 .topnav ul li>a{
     font-size: 18px;
+}
 
+li.active{
+    background-color: white;
+}
+
+/*导航鼠标经过效果*/
+li:hover{
+    background-color: white;
 }
 
 
+/*第二部分：轮播图样式*/
+
+.slide_holder{
+    position: relative;/*父类标签，设置相对定位，为round_botton做参考*/
+}
+
+.slide_runner{
+    height: 280px;
+    width: 670px;
+    overflow: hidden;
+}
+
+/*下半部分：轮播信息*/
+.slide_controls{
+    width: 670px;
+    height: 34px;
+    line-height: 34px;
+    background: url(../images/slide-bg.png) 0 0;
+    position: absolute;
+    bottom: 0;
+}
+
+/*标题一*/
+.slide_controls>p{
+    color: white;
+    margin: 0 15px;
+}
+.slide_controls>.desc{
+    color: white;
+}
+
+/*圆点按钮*/
+.round_button span{
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    border-radius: 50px;
+    margin-right: 15px;
+    cursor: pointer;
+    text-align: center;
+    background-color: #999999;
+    color: white;
+}
+
+.round_button span.on{
+    background: #f60;
+}
+
+/*右侧部分：关注我*/
+/*实现类似进度条效果*/
+.attention_me{
+    width: 35%;
+    margin-bottom: 20px;
+}
+.attention_me>h3{
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    border-bottom: 1px solid #E6E6E6;
+    position: relative;
+}
+.attention_me>h3:after{
+    content: "";
+    width: 0;
+    height: 1px;
+    background: blue;
+    position: absolute;
+    top:100%;
+    left:0%;
+    transition: all .8s;
+}
+.attention_me>h3:hover:after{
+    width: 100%;
+}
 
 
+/*关注logo排列*/
+.infortion_logo{
+    margin-top: 20px;
+}
+
+.infortion_logo ul li{
+    float: left;
+}
+.infortion_logo ul li>a{
+    display: inline-block;
+    width: 60px;
+    height: 50px;
+    margin:0  18px;
+    text-align: center;
+    padding-top: 63px;
+}
+
+/*给li>a 加背景图标*/
+a.weibo{
+    background: url(../images/ico_05_1.jpg) no-repeat scroll 0% 0% transparent;
+}
+a.weixin{
+    background: url(../images/ico_04_1.jpg) no-repeat scroll 0% 0% transparent;
+}
+a.email{
+    background: url(../images/ico_07_1.jpg) no-repeat scroll 0% 0% transparent;
+}
+a.qq{
+       background: url(../images/ico_06_1.jpg) no-repeat scroll 0% 0% transparent;
+}
+.attention_logo img{
+    width: 100%;
+    height: 105px;
+}
