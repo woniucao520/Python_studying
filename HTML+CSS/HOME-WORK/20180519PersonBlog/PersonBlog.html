@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="css/base.css" type="text/css">
     <link rel="stylesheet" href="css/index.css" type="text/css">
+    <link rel="stylesheet" href="css/shutter.css" type="text/css">
 
     <!--js-->
 
@@ -71,22 +72,55 @@
         <!--轮播图与右侧关注我-->
         <div class="banner clear-float">
             <!--左侧轮播图-->
-            <div class="slide_holder fl">
-                <div class="slide_runner">
-                    <a href="#"><img id="img_1" src="images/a1.jpg"></a>
-                    <a href="#"><img id="img_2" src="images/a2.jpg"></a>
-                    <a href="#"><img id="img_3" src="images/a4.jpg"></a>
+            <div class="shutter fl">
+                <div class="shutter-img">
+                  <a href="#" data-shutter-title="scrapy 爬取网易云音乐"><img src="images/a1.jpg" alt="#"></a>
+                  <a href="#" data-shutter-title="如何让div居中显示"><img src="images/a2.jpg" alt="#"></a>
+                  <a href="#" data-shutter-title="如何解决redis缓存问题"><img src="images/a3.jpg" alt="#"></a>
+                   <a href="#" data-shutter-title="个人博客搭建"><img src="images/a4.jpg" alt="#"></a>
                 </div>
-                <div class="slide_controls clear-float">
-                    <p class="title fl"><strong><span>标题1</span></strong></p>
-                    <h3 class="desc fl">内容的描述这里添加</h3>
-                    <div class="round_button fr">
-                        <span class="on">1</span>
-                        <span>2</span>
-                        <span>3</span>
-                    </div>
+                <ul class="shutter-btn">
+                  <li class="prev"></li>
+                  <li class="next"></li>
+                </ul>
+                <div class="shutter-desc">
+                <p>scrapy 爬取网易云音乐</p>
                 </div>
-            </div>
+        </div>
+
+                <script src="js/jquery.min.js"></script>
+                <script src="js/velocity.js"></script>
+                <script src="js/shutter.js"></script>
+                <script>
+                $(function () {
+                  $('.shutter').shutter({
+                    shutterW: 670, // 容器宽度
+                    shutterH: 280, // 容器高度
+                    isAutoPlay: true, // 是否自动播放
+                    playInterval: 3000, // 自动播放时间
+                    curDisplay: 3, // 当前显示页
+                    fullPage: false // 是否全屏展示
+                  });
+                });
+                </script>
+
+
+            <!--<div class="slide_holder fl">-->
+                <!--<div class="slide_runner">-->
+                    <!--<a href="#"><img id="img_1" src="images/a1.jpg"></a>-->
+                    <!--<a href="#"><img id="img_2" src="images/a2.jpg"></a>-->
+                    <!--<a href="#"><img id="img_3" src="images/a4.jpg"></a>-->
+                <!--</div>-->
+                <!--<div class="slide_controls clear-float">-->
+                    <!--<p class="title fl"><strong><span>标题1</span></strong></p>-->
+                    <!--<h3 class="desc fl">内容的描述这里添加</h3>-->
+                    <!--<div class="round_button fr">-->
+                        <!--<span class="on">1</span>-->
+                        <!--<span>2</span>-->
+                        <!--<span>3</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
             <!--右侧关注我-->
             <div class="attention_me fr">
                 <h3>关注我</h3>
@@ -215,6 +249,11 @@
                         </div>
                     </div>
                 </div>
+
+
+                <!--点击排行的js操作：排他思想-->
+                <script>
+                    </script>
                 <!--标签云-->
                 <div class="tag_cloud">
                     <h3>标签云</h3>
